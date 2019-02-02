@@ -1,4 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 100 Days #ZeroToApp challenge // FEB 2019
+
+For this Personal Project I chose something that is very close to me. I and my girlfriend are also running a successful Pet Boarding business. This is a small and agile company that offers unique services to its customers and its furry guests.
+⠀⠀⠀⠀⠀⠀⠀⠀⠀
+I like to say that we are a modern business, but at the moment, all business records are still in paper form, all business transactions are stored in a spreadsheet and all of the reservations are stored in Google Calendar. Many times I tried unsuccessfully to find an app that would suit us. Every app I spot is way too complicated, overwhelming and forces the user to use features that are not needed. My plan is to build a simple app to connect above-mentioned business activities in one place.
+⠀⠀⠀⠀⠀⠀⠀⠀⠀
+Here are the user stories that have to be fulfilled to consider this project a success:
+
+1. I have to authenticate to use the app
+2. I can add, view, edit and remove information about customers.
+3. I can add, view, edit and remove information about pets.
+4. I can make a reservation and sync it with Google calendar.
+5. I can do all of the above from a mobile device
+⠀⠀⠀⠀⠀⠀⠀⠀⠀
+Doing all of this will create a great foundation to modernize our business processes. But first, I have to #design the app. Designing a #UI will be my focus for the first few days.
 
 ## Available Scripts
 
@@ -24,45 +38,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
