@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import HomePageContainer from './containers/HomePageContainer'
+import LoginPageContainer from './containers/LoginPageContainer'
+import AddNewPetFormContainer from './containers/AddNewPetFormContainer'
+import ItemListPageContainer from './containers/ItemListPageContainer'
+import Nav from './components/Nav';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -55,7 +60,15 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
-          <HomePageContainer />
+          <Router>
+            <>
+              <Nav />
+              <Route exact path="/" component={HomePageContainer} />
+              <Route path="/login" component={LoginPageContainer} />
+              <Route path="/list" component={ItemListPageContainer} />
+              <Route path="/wizard" component={AddNewPetFormContainer} />
+            </>
+          </Router>
         </>
       </ThemeProvider>
     );
