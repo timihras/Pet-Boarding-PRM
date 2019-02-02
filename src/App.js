@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import HomePageContainer from './containers/HomePageContainer'
 import LoginPageContainer from './containers/LoginPageContainer'
 import AddNewPetFormContainer from './containers/AddNewPetFormContainer'
 import ItemListPageContainer from './containers/ItemListPageContainer'
+import NotFoundPageContainer from './containers/NotFoundPageContainer'
+import CustomerProfilePageContainer from './containers/CustomerProfilePageContainer';
+import PetProfilePageContainer from './containers/PetProfilePageContainer';
 import Nav from './components/Nav';
 
 const GlobalStyle = createGlobalStyle`
@@ -20,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.mainTextColor};
     font-family: ${props => props.theme.generalFont};
     font-size: ${props => props.theme.fontSizeGeneral};
+  }
+
+  .active{
+    color:red;
   }
 `
 
@@ -63,10 +70,15 @@ class App extends Component {
           <Router>
             <>
               <Nav />
-              <Route exact path="/" component={HomePageContainer} />
-              <Route path="/login" component={LoginPageContainer} />
-              <Route path="/list" component={ItemListPageContainer} />
-              <Route path="/wizard" component={AddNewPetFormContainer} />
+              <Switch>
+                <Route exact path="/" component={HomePageContainer} />
+                <Route path="/list" component={ItemListPageContainer} />
+                <Route path="/customer/:id" component={CustomerProfilePageContainer} />
+                <Route path="/pet/:id" component={PetProfilePageContainer} />
+                <Route path="/login" component={LoginPageContainer} />
+                <Route path="/wizard" component={AddNewPetFormContainer} />
+                <Route component={NotFoundPageContainer} />
+              </Switch>
             </>
           </Router>
         </>

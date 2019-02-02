@@ -6,22 +6,22 @@ export default function Nav() {
     <div>
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink exact activeClassName="active" to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink activeClassName="active" to="/login">Login</NavLink>
         </li>
         <li>
-          <NavLink to="/list">Customer & Pet List</NavLink>
+          <NavLink activeClassName="active" to="/list">Customer & Pet List</NavLink>
         </li>
         <li>
-          <NavLink to="/calendar">Calendar & Event List</NavLink>
+          <NavLink activeClassName="active" to="/calendar">Calendar & Event List</NavLink>
         </li>
         <li>
-          <NavLink to="/add-pet-wizard">Add a new Pet</NavLink>
+          <NavLink activeClassName="active" to="/add-pet-wizard">Add a new Pet</NavLink>
         </li>
         <li>
-          <NavLink to="/add-event">Add a new Event</NavLink>
+          <NavLink activeClassName="active" to="/add-event">Add a new Event</NavLink>
         </li>
       </ul>
     </div>
