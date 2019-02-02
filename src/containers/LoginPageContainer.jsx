@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-export default function LoginPageContainer() {
-  return (
-    <div>
-      Login Page
-    </div>
-  )
-}
+import { FirebaseContext } from '../utils/Firebase';
+
+const LoginPageContainer = () => (
+  <FirebaseContext.Consumer>
+    {firebase => {
+      return <div>I've access to Firebase and render something.</div>;
+    }}
+  </FirebaseContext.Consumer>
+);
+
+export default LoginPageContainer;
