@@ -12,10 +12,10 @@ import CustomerProfilePageContainer from './CustomerProfilePageContainer';
 import PetProfilePageContainer from './PetProfilePageContainer';
 import Navigation from '../components/Navigation';
 
-const AppRoutes = () => (
+const AppRoutes = ({ authUser }) => (
   <Router>
     <>
-      <Navigation />
+      <Navigation authUser={authUser} />
       <Switch>
         <Route exact path={ROUTES.HOME} component={HomePageContainer} />
         <Route path={ROUTES.LIST} component={ItemListPageContainer} />

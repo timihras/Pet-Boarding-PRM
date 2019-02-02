@@ -1,21 +1,33 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import SignOutLink from './SignOutLink'
 import * as ROUTES from '../constants/routes'
 
-const Navigation = () => {
+const Navigation = ({ authUser }) => (
+  <div>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
+);
+
+const NavigationAuth = () => {
   return (
-    <div>
-      <ul>
-        <li><NavLink exact activeClassName="active" to={ROUTES.HOME}>Home</NavLink></li>
-        <li><NavLink activeClassName="active" to={ROUTES.SIGN_IN}>Sign In</NavLink></li>
-        <li><NavLink activeClassName="active" to={ROUTES.SIGN_UP}>Register</NavLink></li>
-        <li><NavLink activeClassName="active" to={ROUTES.LIST}>Customer & Pet List</NavLink></li>
-        <li><NavLink activeClassName="active" to={ROUTES.CALENDAR}>Calendar & Event List</NavLink></li>
-        <li><NavLink activeClassName="active" to={ROUTES.ADD_WIZARD}>Add a new Pet Wizard</NavLink></li>
-        <li><NavLink activeClassName="active" to={ROUTES.ADD_EVENT}>Add a new Event</NavLink></li>
-      </ul>
-    </div>
+    <ul>
+      <li><NavLink exact activeClassName="active" to={ROUTES.HOME}>Home</NavLink></li>
+      <li><NavLink activeClassName="active" to={ROUTES.SIGN_IN}>Sign In</NavLink></li>
+      <li><NavLink activeClassName="active" to={ROUTES.SIGN_UP}>Register</NavLink></li>
+      <li><NavLink activeClassName="active" to={ROUTES.LIST}>Customer & Pet List</NavLink></li>
+      <li><NavLink activeClassName="active" to={ROUTES.CALENDAR}>Calendar & Event List</NavLink></li>
+      <li><NavLink activeClassName="active" to={ROUTES.ADD_WIZARD}>Add a new Pet Wizard</NavLink></li>
+      <li><NavLink activeClassName="active" to={ROUTES.ADD_EVENT}>Add a new Event</NavLink></li>
+      <li><SignOutLink /></li>
+    </ul>
+  )
+}
+
+const NavigationNonAuth = () => {
+  return (
+    <ul>
+      <li><NavLink activeClassName="active" to={ROUTES.SIGN_IN}>Sign In</NavLink></li>
+    </ul>
   )
 }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { withFirebase } from './utils/Firebase';
+
 import AppRoutes from './containers/AppRoutes';
 
 const GlobalStyle = createGlobalStyle`
@@ -54,16 +56,36 @@ const theme = {
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      authUser: null
+    }
+  }
+
+  componentDidMount() {
+    this.listener = this.props.firebase.auth.onAuthStateChanged(authUser =>
+      authUser
+        ? this.setState({ authUser })
+        : this.setState({ authUser: null })
+    )
+  }
+
+  componentWillUnmount() {
+    this.listener();
+  }
+
   render() {
     return (
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
-          <AppRoutes />
+          <AppRoutes authUser={this.state.authUser} />
         </>
       </ThemeProvider>
     );
   }
 }
 
-export default App;
+export default withFirebase(App);
