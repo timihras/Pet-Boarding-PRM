@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     color: ${props => props.theme.mainTextColor};
-    font-size: ${props => props.theme.fontSizeGeneral}
+    font-family: ${props => props.theme.generalFont};
+    font-size: ${props => props.theme.fontSizeGeneral};
   }
 `
 
@@ -35,6 +36,7 @@ const theme = {
   sizeXL: '5rem',
 
   darkBgColor: "rgba(97, 83, 117, 1)",
+  lightBgColor: "rgba(241, 241, 241, 1)",
   mainTextColor: "rgba(74, 73, 73, 1)",
   disabledTextColor: "rgba(74, 73, 73, 0.5)",
   accentPrimaryColor: "rgba(212, 89, 131, 1)",
