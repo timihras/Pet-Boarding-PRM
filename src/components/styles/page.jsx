@@ -5,10 +5,9 @@ const Page = styled.div`
 `;
 
 const Card = styled.div`
-  border-radius: 5px;
+  border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
-  margin: 1rem;
-  padding: 1rem;
+  padding: ${props => props.theme.sizeM};
 `;
 
 export { Page, Card }

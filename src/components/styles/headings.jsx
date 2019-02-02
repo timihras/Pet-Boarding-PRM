@@ -7,10 +7,19 @@ const Heading1 = styled.h1`
   font-weight: 700;
 
   span {
+    color: ${props => props.theme.disabledTextColor};
     font-size: ${props => props.theme.fontSizeGeneral};
     font-weight: 400;
     margin-left: 10px;
   }
 `;
 
-export { Heading1 }
+const Heading2 = styled.h2`
+
+`;
+
+const Heading3 = styled.h3`
+  
+`;
+
+export { Heading1, Heading2, Heading3 }

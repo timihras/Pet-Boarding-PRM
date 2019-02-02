@@ -34,6 +34,7 @@ const theme = {
   sizeL: '3rem',
   sizeXL: '5rem',
 
+  darkBgColor: "rgba(97, 83, 117, 1)",
   mainTextColor: "rgba(74, 73, 73, 1)",
   disabledTextColor: "rgba(74, 73, 73, 0.5)",
   accentPrimaryColor: "rgba(212, 89, 131, 1)",
@@ -43,6 +44,7 @@ const theme = {
   successColor: "rgba(109, 188, 112, 1)",
 
   boxShadow: "0px 5px 15px rgba(86, 88, 116, .16)",
+  borderRadius: '5px',
 };
 
 class App extends Component {
