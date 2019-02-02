@@ -1,14 +1,6 @@
 import React, { Component } from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import HomePageContainer from './containers/HomePageContainer'
-import LoginPageContainer from './containers/LoginPageContainer'
-import AddNewPetFormContainer from './containers/AddNewPetFormContainer'
-import ItemListPageContainer from './containers/ItemListPageContainer'
-import NotFoundPageContainer from './containers/NotFoundPageContainer'
-import CustomerProfilePageContainer from './containers/CustomerProfilePageContainer';
-import PetProfilePageContainer from './containers/PetProfilePageContainer';
-import Nav from './components/Nav';
+import AppRoutes from './containers/AppRoutes';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -67,20 +59,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
-          <Router>
-            <>
-              <Nav />
-              <Switch>
-                <Route exact path="/" component={HomePageContainer} />
-                <Route path="/list" component={ItemListPageContainer} />
-                <Route path="/customer/:id" component={CustomerProfilePageContainer} />
-                <Route path="/pet/:id" component={PetProfilePageContainer} />
-                <Route path="/login" component={LoginPageContainer} />
-                <Route path="/wizard" component={AddNewPetFormContainer} />
-                <Route component={NotFoundPageContainer} />
-              </Switch>
-            </>
-          </Router>
+          <AppRoutes />
         </>
       </ThemeProvider>
     );

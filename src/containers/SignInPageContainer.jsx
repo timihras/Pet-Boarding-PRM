@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FirebaseContext } from '../utils/Firebase';
 
-const LoginPageContainer = () => (
+const SignInPageContainer = () => (
   <FirebaseContext.Consumer>
     {firebase => {
       return <div>I've access to Firebase and render something.</div>;
@@ -10,4 +10,4 @@ const LoginPageContainer = () => (
   </FirebaseContext.Consumer>
 );
 
-export default LoginPageContainer;
+export default SignInPageContainer;
