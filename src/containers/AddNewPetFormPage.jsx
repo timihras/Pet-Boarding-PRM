@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AddNewPetFormContainer() {
+export default function AddNewPetFormPage() {
   return (
     <div>
       Wizard

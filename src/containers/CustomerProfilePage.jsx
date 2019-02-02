@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CustomerProfilePageContainer = (props) => {
+const CustomerProfilePage = (props) => {
   const { params } = props.match;
   return (
     <div>
@@ -9,5 +9,5 @@ const CustomerProfilePageContainer = (props) => {
   )
 }
 
-export default CustomerProfilePageContainer;
+export default CustomerProfilePage;
 

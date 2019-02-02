@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'recompose'
 
-import { SignUpLink } from './SignUpPageContainer';
+import { SignUpLink } from './SignUpPage';
 import { withFirebase } from '../utils/Firebase'
 import * as ROUTES from '../constants/routes'
 

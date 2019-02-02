@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import { withFirebase } from './utils/Firebase';
+import { withAuthentication } from './utils/Session';
 
 import AppRoutes from './containers/AppRoutes';
 
@@ -55,37 +55,15 @@ const theme = {
   borderRadius: '5px',
 };
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      authUser: null
-    }
-  }
-
-  componentDidMount() {
-    this.listener = this.props.firebase.auth.onAuthStateChanged(authUser =>
-      authUser
-        ? this.setState({ authUser })
-        : this.setState({ authUser: null })
-    )
-  }
-
-  componentWillUnmount() {
-    this.listener();
-  }
-
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <>
-          <GlobalStyle />
-          <AppRoutes authUser={this.state.authUser} />
-        </>
-      </ThemeProvider>
-    );
-  }
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <AppRoutes />
+      </>
+    </ThemeProvider>
+  );
 }
 
-export default withFirebase(App);
+export default withAuthentication(App);

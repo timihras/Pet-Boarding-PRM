@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function PetProfilePageContainer() {
+export default function NotFoundPage() {
   return (
     <div>
-      Pet
+      Not Found
     </div>
   )
 }

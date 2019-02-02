@@ -14,7 +14,7 @@ const INITIAL_STATE = {
 }
 
 
-const SignUpPageContainer = () => (
+const SignUpPage = () => (
   <div>
     <h1>Sign Up</h1>
     <SignUpForm />
@@ -114,6 +114,6 @@ const SignUpLink = () => (
 
 const SignUpForm = compose(withRouter, withFirebase)(SignUpFormBase)
 
-export default SignUpPageContainer
+export default SignUpPage
 
 export { SignUpForm, SignUpLink }

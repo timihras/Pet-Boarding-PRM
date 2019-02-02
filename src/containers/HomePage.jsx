@@ -7,7 +7,7 @@ import { Heading1 } from '../components/styles/headings'
 
 import Menu from '../components/icons/menu-icon'
 
-class HomePageContainer extends Component {
+class HomePage extends Component {
   render() {
     return (
       <Page>
@@ -23,4 +23,4 @@ class HomePageContainer extends Component {
   }
 }
 
-export default HomePageContainer;
+export default HomePage;
