@@ -5,11 +5,13 @@ import { compose } from 'recompose'
 import { SignUpLink } from './SignUpPage';
 import { withFirebase } from '../utils/Firebase'
 import * as ROUTES from '../constants/routes'
+import { PasswordForgetLink } from './PasswordForgetPage'
 
 const SignInPage = () => (
   <div>
     <h1>SignIn</h1>
     <SignInForm />
+    <PasswordForgetLink />
     <SignUpLink />
   </div>
 );

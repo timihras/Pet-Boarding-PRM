@@ -17,7 +17,11 @@ class HomePage extends Component {
         <PrimaryButton>next →</PrimaryButton>
         <div><Input placeholder="Iskanje"></Input></div>
         <Card>Test</Card>
+        <MaterialIcon icon="grain" />
+        <MaterialIcon icon="blur_on" />
+        <MaterialIcon icon="graphic_eq" />
         <MaterialIcon icon="dashboard" />
+        <MaterialIcon icon="close" />
       </Page>
     )
   }
