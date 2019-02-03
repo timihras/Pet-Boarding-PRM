@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { withAuthorization } from '../utils/Session'
+
 const CustomerProfilePage = (props) => {
   const { params } = props.match;
   return (
@@ -9,5 +11,7 @@ const CustomerProfilePage = (props) => {
   )
 }
 
-export default CustomerProfilePage;
+const condition = authUser => !!authUser
+
+export default withAuthorization(condition)(CustomerProfilePage);
 

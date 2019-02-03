@@ -1,9 +1,13 @@
 import React from 'react'
 
-export default function ItemListPage() {
-  return (
-    <div>
-      Customer & Pet List
-    </div>
-  )
-}
+import { withAuthorization } from '../utils/Session'
+
+const ItemListPage = () => (
+  <div>
+    Customer & Pet List
+  </div>
+);
+
+const condition = authUser => !!authUser
+
+export default withAuthorization(condition)(ItemListPage)
