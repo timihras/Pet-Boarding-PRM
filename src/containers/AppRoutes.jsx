@@ -12,7 +12,8 @@ import CustomerProfilePage from './CustomerProfilePage'
 import PetProfilePage from './PetProfilePage'
 import Navigation from '../components/Navigation'
 import UserAccountPage from './UserAccountPage'
-import PasswordForgetPage from './PasswordForgetPage';
+import PasswordForgetPage from './PasswordForgetPage'
+import SettingsPage from './SettingsPage'
 
 const AppRoutes = ({ authUser }) => (
   <Router>
@@ -20,7 +21,8 @@ const AppRoutes = ({ authUser }) => (
       <Navigation authUser={authUser} />
       <Switch>
         <Route exact path={ROUTES.HOME} component={HomePage} />
-        <Route exact path={ROUTES.ACCOUNT} component={UserAccountPage} />
+        <Route path={ROUTES.ACCOUNT} component={UserAccountPage} />
+        <Route path={ROUTES.SETTINGS} component={SettingsPage} />
         <Route path={ROUTES.LIST} component={ItemListPage} />
         <Route path={ROUTES.CUSTOMER_ITEM} component={CustomerProfilePage} />
         <Route path={ROUTES.PET_ITEM} component={PetProfilePage} />

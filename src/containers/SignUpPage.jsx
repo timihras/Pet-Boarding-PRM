@@ -29,12 +29,23 @@ class SignUpFormBase extends React.Component {
   }
 
   onSubmit = event => {
-    // eslint-disable-next-line
     const { username, email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        // Create a user in your Firebase
+        return this.props.firebase
+          .user(authUser.user.uid)
+          .set(
+            {
+              username,
+              email,
+            },
+            { merge: true },
+          )
+      })
+      .then(() => {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
