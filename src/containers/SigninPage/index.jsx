@@ -2,10 +2,10 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'recompose'
 
-import { SignUpLink } from './SignUpPage';
-import { withFirebase } from '../utils/Firebase'
-import * as ROUTES from '../constants/routes'
-import { PasswordForgetLink } from './PasswordForgetPage'
+import { SignUpLink } from '../SignupPage';
+import { withFirebase } from '../../utils/Firebase'
+import * as ROUTES from '../../constants/routes'
+import { PasswordForgetLink } from '../PasswordForgetPage'
 
 const SignInPage = () => (
   <div>

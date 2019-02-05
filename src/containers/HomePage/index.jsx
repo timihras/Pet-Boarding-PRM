@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import MaterialIcon from 'material-icons-react'
 
-import { withAuthorization } from '../utils/Session'
+import { withAuthorization } from '../../utils/Session'
 
-import { Page, Card } from '../components/styles/page'
-import { Input } from '../components/styles/form'
-import { PrimaryButton, SecondaryButton } from '../components/styles/buttons'
-import { Heading1 } from '../components/styles/headings'
-import Menu from '../components/icons/menu-icon'
+import { Page, Card } from '../../components/styles/page'
+import { Input } from '../../components/styles/form'
+import { PrimaryButton, SecondaryButton } from '../../components/styles/buttons'
+import { Heading1 } from '../../components/styles/headings'
+import Menu from '../../components/icons/menu-icon'
 
 class HomePage extends Component {
   render() {

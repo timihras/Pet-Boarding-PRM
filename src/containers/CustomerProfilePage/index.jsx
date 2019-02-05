@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withAuthorization } from '../utils/Session'
+import { withAuthorization } from '../../utils/Session'
 
 const CustomerProfilePage = (props) => {
   const { params } = props.match;

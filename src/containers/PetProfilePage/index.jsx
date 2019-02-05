@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function PetProfilePage() {
+const PetProfilePage = () => {
   return (
     <div>
       Pet
     </div>
   )
 }
+export default PetProfilePage

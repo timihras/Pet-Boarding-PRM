@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function AddNewPetFormPage() {
+const AddNewWizardPage = () => {
   return (
     <div>
       Wizard
     </div>
   )
 }
+
+export default AddNewWizardPage

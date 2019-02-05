@@ -1,9 +1,9 @@
 import React from 'react'
-import { withFirebase } from '../utils/Firebase'
+import { withFirebase } from '../../utils/Firebase'
 import { compose } from 'recompose'
 
-import { withAuthorization } from '../utils/Session'
-import * as ROLES from '../constants/roles'
+import { withAuthorization } from '../../utils/Session'
+import * as ROLES from '../../constants/roles'
 
 class SettingsPage extends React.Component {
   constructor(props) {
