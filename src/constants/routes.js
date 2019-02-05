@@ -8,7 +8,7 @@ export const SETTINGS = '/settings';
 
 export const LIST = '/list';
 export const CUSTOMER_ITEM = '/customer/:id';
-export const ADD_CUSTOMER = '/add-pet';
+export const ADD_CUSTOMER = '/add-customer';
 export const PET_ITEM = '/pet/:id';
 export const ADD_PET = '/add-pet';
 
