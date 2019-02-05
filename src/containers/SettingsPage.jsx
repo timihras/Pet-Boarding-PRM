@@ -1,5 +1,9 @@
 import React from 'react'
 import { withFirebase } from '../utils/Firebase'
+import { compose } from 'recompose'
+
+import { withAuthorization } from '../utils/Session'
+import * as ROLES from '../constants/roles'
 
 class SettingsPage extends React.Component {
   constructor(props) {
@@ -59,4 +63,10 @@ const UserList = ({ users }) => (
   </ul>
 )
 
-export default withFirebase(SettingsPage)
+const condition = authUser =>
+  authUser && authUser.roles.includes(ROLES.ADMIN)
+
+export default compose(
+  withAuthorization(condition),
+  withFirebase
+)(SettingsPage)

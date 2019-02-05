@@ -4,12 +4,14 @@ import { compose } from 'recompose'
 
 import { withFirebase } from '../utils/Firebase'
 import * as ROUTES from '../constants/routes'
+import * as ROLES from '../constants/roles'
 
 const INITIAL_STATE = {
   username: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  isAdmin: false,
   error: null,
 }
 
@@ -29,7 +31,13 @@ class SignUpFormBase extends React.Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { username, email, passwordOne, isAdmin } = this.state
+
+    const roles = []
+
+    if (isAdmin) {
+      roles.push(ROLES.ADMIN)
+    }
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -41,24 +49,29 @@ class SignUpFormBase extends React.Component {
             {
               username,
               email,
+              roles,
             },
             { merge: true },
           )
       })
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        this.setState({ ...INITIAL_STATE })
+        this.props.history.push(ROUTES.HOME)
       })
       .catch(error => {
-        this.setState({ error });
+        this.setState({ error })
       });
 
     event.preventDefault();
   }
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value })
   }
+
+  onChangeCheckbox = event => {
+    this.setState({ [event.target.name]: event.target.checked })
+  };
 
   render() {
 
@@ -67,14 +80,15 @@ class SignUpFormBase extends React.Component {
       email,
       passwordOne,
       passwordTwo,
+      isAdmin,
       error,
-    } = this.state;
+    } = this.state
 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === '';
+      username === ''
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -106,6 +120,15 @@ class SignUpFormBase extends React.Component {
           type="password"
           placeholder="Confirm Password"
         />
+        <label>
+          Admin:
+          <input
+            name="isAdmin"
+            type="checkbox"
+            checked={isAdmin}
+            onChange={this.onChangeCheckbox}
+          />
+        </label>
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>

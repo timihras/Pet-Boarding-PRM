@@ -21,7 +21,6 @@ class Firebase {
 
     // Initialize the database module - firebase/firestore
     this.db = app.firestore();
-    this.db.settings({ timestampsInSnapshots: true });
   }
 
   // *** Auth API ***
@@ -35,17 +34,41 @@ class Firebase {
 
   doSignOut = () => this.auth.signOut();
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  doPasswordReset = email => this.auth.sendPasswordResetEmail(email)
 
   doPasswordUpdate = password =>
-    this.auth.currentUser.updatePassword(password);
+    this.auth.currentUser.updatePassword(password)
+
+  onAuthUserListener = (next, fallback) =>
+    this.auth.onAuthStateChanged(authUser => {
+      if (authUser) {
+        this.user(authUser.uid).get()
+          .then(snapshot => {
+            const dbUser = snapshot.data()
+
+            // default empty roles
+            if (!dbUser.roles) {
+              dbUser.roles = []
+            }
+            // merge auth and db user
+            authUser = {
+              uid: authUser.uid,
+              email: authUser.email,
+              ...dbUser,
+            };
+            next(authUser)
+          });
+      } else {
+        fallback()
+      }
+    });
 
   // *** User API ***
   // Methods to handle users of the app
 
-  user = uid => this.db.doc(`users/${uid}`);
+  user = uid => this.db.doc(`users/${uid}`)
 
-  users = () => this.db.collection('users');
+  users = () => this.db.collection('users')
 }
 
 export default Firebase
