@@ -6,6 +6,7 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const ACCOUNT = '/user';
 
 export const SETTINGS = '/settings';
+export const USER = '/settings/user';
 export const USER_DETAILS = '/settings/user/:id';
 
 export const LIST = '/list';
