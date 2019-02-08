@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import HomePageContainer from './containers/HomePageContainer'
+import { withAuthentication } from './utils/Session';
+
+import AppRoutes from './containers/AppRoutes';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -15,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.mainTextColor};
     font-family: ${props => props.theme.generalFont};
     font-size: ${props => props.theme.fontSizeGeneral};
+  }
+
+  .active{
+    color:red;
   }
 `
 
@@ -49,17 +55,15 @@ const theme = {
   borderRadius: '5px',
 };
 
-class App extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <>
-          <GlobalStyle />
-          <HomePageContainer />
-        </>
-      </ThemeProvider>
-    );
-  }
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <AppRoutes />
+      </>
+    </ThemeProvider>
+  );
 }
 
-export default App;
+export default withAuthentication(App);
