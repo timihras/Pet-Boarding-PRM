@@ -11,6 +11,7 @@ import NotFoundPage from './NotFoundPage'
 import CustomerProfilePage from './CustomerProfilePage'
 import PetProfilePage from './PetProfilePage'
 import Navigation from '../components/Navigation'
+import DrawerMenu from '../components/DrawerMenu'
 import UserAccountPage from './UserAccountPage'
 import PasswordForgetPage from './PasswordForgetPage'
 import SettingsPage from './SettingsPage'
@@ -18,7 +19,8 @@ import SettingsPage from './SettingsPage'
 const AppRoutes = ({ authUser }) => (
   <Router>
     <>
-      <Navigation authUser={authUser} />
+      {/* <Navigation authUser={authUser} /> */}
+      <DrawerMenu authUser={authUser} />
       <Switch>
         <Route exact path={ROUTES.HOME} component={HomePage} />
         <Route path={ROUTES.ACCOUNT} component={UserAccountPage} />
