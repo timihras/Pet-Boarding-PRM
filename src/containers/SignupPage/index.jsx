@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
-import { compose } from 'recompose'
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
-import { withFirebase } from '../../utils/Firebase'
-import * as ROUTES from '../../constants/routes'
-import * as ROLES from '../../constants/roles'
+import { withFirebase } from '../../utils/Firebase';
+import * as ROUTES from '../../constants/routes';
+import * as ROLES from '../../constants/roles';
 
 const INITIAL_STATE = {
   username: '',
@@ -12,9 +12,8 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   isAdmin: false,
-  error: null,
-}
-
+  error: null
+};
 
 const SignUpPage = () => (
   <div>
@@ -25,70 +24,68 @@ const SignUpPage = () => (
 
 class SignUpFormBase extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = { ...INITIAL_STATE }
+    this.state = { ...INITIAL_STATE };
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin } = this.state
+    const { username, email, passwordOne, isAdmin } = this.state;
+    const { firebase, history } = this.props;
 
-    const roles = []
+    const roles = [];
 
     if (isAdmin) {
-      roles.push(ROLES.ADMIN)
+      roles.push(ROLES.ADMIN);
     }
 
-    this.props.firebase
+    firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase
-        return this.props.firebase
-          .user(authUser.user.uid)
-          .set(
-            {
-              username,
-              email,
-              roles,
-            },
-            { merge: true },
-          )
+        return firebase.user(authUser.user.uid).set(
+          {
+            username,
+            email,
+            roles
+          },
+          { merge: true }
+        );
       })
       .then(() => {
-        this.setState({ ...INITIAL_STATE })
-        this.props.history.push(ROUTES.HOME)
+        this.setState({ ...INITIAL_STATE });
+        history.push(ROUTES.HOME);
       })
       .catch(error => {
-        this.setState({ error })
+        this.setState({ error });
       });
 
     event.preventDefault();
-  }
+  };
 
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
-  }
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   onChangeCheckbox = event => {
-    this.setState({ [event.target.name]: event.target.checked })
+    this.setState({ [event.target.name]: event.target.checked });
   };
 
   render() {
-
     const {
       username,
       email,
       passwordOne,
       passwordTwo,
       isAdmin,
-      error,
-    } = this.state
+      error
+    } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === ''
+      username === '';
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -120,9 +117,10 @@ class SignUpFormBase extends React.Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <label>
+        <label htmlFor="is-admin">
           Admin:
           <input
+            id="is-admin"
             name="isAdmin"
             type="checkbox"
             checked={isAdmin}
@@ -135,19 +133,21 @@ class SignUpFormBase extends React.Component {
 
         {error && <p>{error.message}</p>}
       </form>
-    )
+    );
   }
-
 }
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    {"Don't have an account?"} <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
-)
+);
 
-const SignUpForm = compose(withRouter, withFirebase)(SignUpFormBase)
+const SignUpForm = compose(
+  withRouter,
+  withFirebase
+)(SignUpFormBase);
 
-export default SignUpPage
+export default SignUpPage;
 
-export { SignUpForm, SignUpLink }
+export { SignUpForm, SignUpLink };

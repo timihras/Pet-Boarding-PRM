@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Page = styled.div`
   padding: ${props => props.theme.sizeS};
@@ -25,4 +25,4 @@ const Card = styled.div`
   margin-bottom: ${props => props.theme.sizeXS};
 `;
 
-export { Page, Card, Flex, FlexResponsive }
+export { Page, Card, Flex, FlexResponsive };

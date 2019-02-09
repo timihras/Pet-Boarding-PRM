@@ -1,18 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 const AddNewWizardPage = () => {
   return (
     <div>
       <Form />
     </div>
-  )
-}
+  );
+};
 
 class Form extends React.Component {
-
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
   render() {
     return (
@@ -22,7 +21,7 @@ class Form extends React.Component {
         <input type="email" name="email" onChange={this.handleChange} />
       </form>
     );
-  };
+  }
 }
 
-export default AddNewWizardPage
+export default AddNewWizardPage;

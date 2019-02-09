@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const Input = styled.input`
+export const Input = styled.input`
   border: none;
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
@@ -15,4 +15,4 @@ const Input = styled.input`
   }
 `;
 
-export { Input };
+export const Form = styled.form``;

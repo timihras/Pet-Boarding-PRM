@@ -1,11 +1,11 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
-import { compose } from 'recompose'
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import { SignUpLink } from '../SignupPage';
-import { withFirebase } from '../../utils/Firebase'
-import * as ROUTES from '../../constants/routes'
-import { PasswordForgetLink } from '../PasswordForgetPage'
+import { withFirebase } from '../../utils/Firebase';
+import * as ROUTES from '../../constants/routes';
+import { PasswordForgetLink } from '../PasswordForgetPage';
 
 const SignInPage = () => (
   <div>
@@ -19,7 +19,7 @@ const SignInPage = () => (
 const INITIAL_STATE = {
   email: '',
   password: '',
-  error: null,
+  error: null
 };
 
 class SignInFormBase extends React.Component {
@@ -31,12 +31,13 @@ class SignInFormBase extends React.Component {
 
   onSubmit = event => {
     const { email, password } = this.state;
+    const { firebase, history } = this.props;
 
-    this.props.firebase
+    firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        history.push(ROUTES.HOME);
       })
       .catch(error => {
         this.setState({ error });
@@ -82,7 +83,7 @@ class SignInFormBase extends React.Component {
 
 const SignInForm = compose(
   withRouter,
-  withFirebase,
+  withFirebase
 )(SignInFormBase);
 
 export default SignInPage;

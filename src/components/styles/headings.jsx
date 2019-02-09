@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Heading1 = styled.h1`
   font-family: ${props => props.theme.headingFont};
@@ -15,7 +15,7 @@ export const Heading1 = styled.h1`
     width: 20px;
     height: 4px;
     border-radius: 2px;
-    margin-top: ${props => props.theme.sizeXS}
+    margin-top: ${props => props.theme.sizeXS};
   }
 
   span {
@@ -49,5 +49,3 @@ export const Heading4 = styled.h3`
     font-weight: 400;
   }
 `;
-
-

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import MaterialIcon from 'material-icons-react'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import MaterialIcon from 'material-icons-react';
 
-import Menu from '../icons/menu-icon'
-import Navigation from '../Navigation'
+import Menu from '../icons/menu-icon';
+import Navigation from '../Navigation';
 
 const Drawer = styled.div`
   height: 100%;
@@ -34,20 +34,20 @@ const Drawer = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
   }
 
   ::-webkit-scrollbar {
     width: 6px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: ${props => props.theme.mainTextColor};
   }
-`
+`;
 
 const MenuButton = styled.button`
   background: 0;
@@ -55,24 +55,40 @@ const MenuButton = styled.button`
   outline: none;
   margin-top: ${props => props.theme.sizeM};
   cursor: pointer;
-`
+`;
 
-const DrawerMenu = (props) => {
-
-  const [isOpen, toggleMenu] = useState(false)
-  const { authUser } = props
+const DrawerMenu = props => {
+  const [isOpen, toggleMenu] = useState(false);
+  const { authUser } = props;
 
   return (
     <>
-      <Drawer style={isOpen ? { "opacity": 1, "transform": "translateX(0)" } : { "opacity": 0, "padding": 0, "transform": "translateX(-100%)" }}>
+      <Drawer
+        style={
+          isOpen
+            ? { opacity: 1, transform: 'translateX(0)' }
+            : { opacity: 0, padding: 0, transform: 'translateX(-100%)' }
+        }
+      >
         <div>
-          <button className="closebtn" onClick={() => toggleMenu(!isOpen)}><MaterialIcon icon="close" /></button>
-          <Navigation authUser={authUser} toggleMenu={() => toggleMenu(!isOpen)} />
+          <button
+            type="button"
+            className="closebtn"
+            onClick={() => toggleMenu(!isOpen)}
+          >
+            <MaterialIcon icon="close" />
+          </button>
+          <Navigation
+            authUser={authUser}
+            toggleMenu={() => toggleMenu(!isOpen)}
+          />
         </div>
       </Drawer>
-      <MenuButton onClick={() => toggleMenu(!isOpen)}><Menu /></MenuButton>
+      <MenuButton onClick={() => toggleMenu(!isOpen)}>
+        <Menu />
+      </MenuButton>
     </>
-  )
-}
+  );
+};
 
-export default DrawerMenu
+export default DrawerMenu;

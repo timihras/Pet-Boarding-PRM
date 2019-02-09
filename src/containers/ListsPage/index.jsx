@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import { withAuthorization } from '../../utils/Session'
+import { withAuthorization } from '../../utils/Session';
 
 const ListsPage = () => (
   <div>
-    Customer & Pet List
+    <h1>Customer & Pet List</h1>
   </div>
 );
 
-const condition = authUser => !!authUser
+const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(ListsPage)
+export default withAuthorization(condition)(ListsPage);

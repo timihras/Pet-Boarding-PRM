@@ -108,5 +108,8 @@ export const EVENTS = [
       name: 'Pauli',
       breed: 'Shih Tzu'
     }
-  },
+  }
 ];
+
+export const CUSTOMERS = [];
+export const PETS = [];

@@ -1,22 +1,22 @@
-import React from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import * as ROUTES from '../constants/routes'
+import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import * as ROUTES from '../constants/routes';
 
-import { Page } from '../components/styles/page'
-import DrawerMenu from '../components/DrawerMenu'
+import { Page } from '../components/styles/page';
+import DrawerMenu from '../components/DrawerMenu';
 
-import HomePage from './HomePage'
-import SignInPage from './SigninPage'
-import SignUpPage from './SignupPage'
-import AddNewWizardPage from './AddNewWizardPage'
-import ListsPage from './ListsPage'
-import NotFoundPage from './NotFoundPage'
-import CustomerProfilePage from './CustomerProfilePage'
-import PetProfilePage from './PetProfilePage'
-import UserAccountPage from './UserAccountPage'
-import PasswordForgetPage from './PasswordForgetPage'
-import SettingsPage from './SettingsPage'
-import CalendarPage from './CalendarPage'
+import HomePage from './HomePage';
+import SignInPage from './SigninPage';
+import SignUpPage from './SignupPage';
+import AddNewWizardPage from './AddNewWizardPage';
+import ListsPage from './ListsPage';
+import NotFoundPage from './NotFoundPage';
+import CustomerProfilePage from './CustomerProfilePage';
+import PetProfilePage from './PetProfilePage';
+import UserAccountPage from './UserAccountPage';
+import PasswordForgetPage from './PasswordForgetPage';
+import SettingsPage from './SettingsPage';
+import CalendarPage from './CalendarPage';
 
 const AppRoutes = ({ authUser }) => (
   <Router>
@@ -43,6 +43,6 @@ const AppRoutes = ({ authUser }) => (
       </Switch>
     </Page>
   </Router>
-)
+);
 
-export default AppRoutes
+export default AppRoutes;
