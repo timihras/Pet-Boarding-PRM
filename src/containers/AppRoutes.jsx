@@ -1,7 +1,9 @@
 import React from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
+
 import { Page } from '../components/styles/page'
+import DrawerMenu from '../components/DrawerMenu'
 
 import HomePage from './HomePage'
 import SignInPage from './SigninPage'
@@ -11,27 +13,32 @@ import ListsPage from './ListsPage'
 import NotFoundPage from './NotFoundPage'
 import CustomerProfilePage from './CustomerProfilePage'
 import PetProfilePage from './PetProfilePage'
-import DrawerMenu from '../components/DrawerMenu'
 import UserAccountPage from './UserAccountPage'
 import PasswordForgetPage from './PasswordForgetPage'
 import SettingsPage from './SettingsPage'
+import CalendarPage from './CalendarPage'
 
 const AppRoutes = ({ authUser }) => (
   <Router>
     <Page>
-      {/* <Navigation authUser={authUser} /> */}
       <DrawerMenu authUser={authUser} />
       <Switch>
         <Route exact path={ROUTES.HOME} component={HomePage} />
-        <Route path={ROUTES.ACCOUNT} component={UserAccountPage} />
+
         <Route path={ROUTES.SETTINGS} component={SettingsPage} />
+        <Route path={ROUTES.ACCOUNT} component={UserAccountPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+
         <Route path={ROUTES.LIST} component={ListsPage} />
         <Route path={ROUTES.CUSTOMER_ITEM} component={CustomerProfilePage} />
         <Route path={ROUTES.PET_ITEM} component={PetProfilePage} />
-        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.ADD_WIZARD} component={AddNewWizardPage} />
-        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+
+        <Route path={ROUTES.CALENDAR} component={CalendarPage} />
+        <Route path={ROUTES.ADD_EVENT} component={AddNewWizardPage} />
+
         <Route component={NotFoundPage} />
       </Switch>
     </Page>

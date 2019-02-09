@@ -1,4 +1,8 @@
 import React from 'react'
+
+import 'moment/locale/sl'
+import moment from 'moment'
+
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { withAuthentication } from './utils/Session';
 
@@ -21,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
   a {
+    color: ${props => props.theme.accentPrimaryColor};
     text-decoration: none; 
   }
   .active{
@@ -37,7 +42,7 @@ const theme = {
   headingFont: "'Dosis', 'sans-serif'",
 
   fontSizeGeneral: '1.4rem',
-  fontSizeXS: '1.2rem',
+  fontSizeXS: '1.1rem',
   fontSizeS: '1.3rem',
   fontSizeM: '1.6rem',
   fontSizeXM: '1.8rem',
@@ -62,9 +67,13 @@ const theme = {
 
   boxShadow: "0px 5px 15px rgba(86, 88, 116, .16)",
   borderRadius: '5px',
+
+  tablet: '38rem',
+  desktop: '38rem',
 };
 
 const App = () => {
+  moment.locale('sl');
   return (
     <ThemeProvider theme={theme}>
       <>

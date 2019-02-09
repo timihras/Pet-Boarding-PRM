@@ -6,6 +6,7 @@ const Input = styled.input`
   box-shadow: ${props => props.theme.boxShadow};
   padding: ${props => props.theme.sizeM};
   outline: none;
+  width: 100%;
 
   &::placeholder {
     color: ${props => props.theme.disabledTextColor};

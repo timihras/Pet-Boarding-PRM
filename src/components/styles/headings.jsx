@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 
-const Heading1 = styled.h1`
+export const Heading1 = styled.h1`
   font-family: ${props => props.theme.headingFont};
   font-size: ${props => props.theme.fontSizeL};
-  text-transform: uppercase;
   font-weight: 700;
+  margin-top: ${props => props.theme.sizeXL};
+  margin-bottom: ${props => props.theme.sizeM};
+  text-transform: uppercase;
 
   &::after {
-    background: ${props => props.theme.darkBgColor};
+    background: ${props => props.theme.mainTextColor};
     content: '';
     display: block;
     width: 20px;
@@ -24,16 +26,28 @@ const Heading1 = styled.h1`
   }
 `;
 
-const Heading2 = styled.h2`
+export const Heading2 = styled.h2`
   font-family: ${props => props.theme.headingFont};
   font-size: ${props => props.theme.fontSizeXM};
   font-weight: 400;
 `;
 
-const Heading3 = styled.h3`
-font-family: ${props => props.theme.headingFont};
-font-size: ${props => props.theme.fontSizeM};
-font-weight: 400;
+export const Heading3 = styled.h3`
+  font-family: ${props => props.theme.headingFont};
+  font-size: ${props => props.theme.fontSizeM};
+  font-weight: 400;
 `;
 
-export { Heading1, Heading2, Heading3 }
+export const Heading4 = styled.h3`
+  font-family: ${props => props.theme.headingFont};
+  font-size: ${props => props.theme.fontSizeGeneral};
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+
+  span {
+    font-weight: 400;
+  }
+`;
+
+

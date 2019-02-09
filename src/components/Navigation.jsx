@@ -13,7 +13,6 @@ import * as ROUTES from '../constants/routes'
 import * as ROLES from '../constants/roles'
 
 const QuickActions = styled.div`
-  margin-top: ${props => props.theme.sizeXL};
 
   a {
     height: 16rem;
@@ -52,7 +51,6 @@ const QuickActions = styled.div`
 `
 
 const MainMenu = styled.div`
-  margin-top: ${props => props.theme.sizeXL};
 
   a {
     height: 11rem;
@@ -151,12 +149,12 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
         <Flex>
           <NavLink
             activeClassName="active"
-            to={ROUTES.ACCOUNT}
+            to={ROUTES.HOME}
             onClick={toggleMenu}
           >
             <button>
-              <MaterialIcon icon="person" size={24} color='#D45983' />
-              <Heading3>User Settings</Heading3>
+              <MaterialIcon icon="home" size={24} color='#D45983' />
+              <Heading3>Home</Heading3>
             </button>
           </NavLink>
 
@@ -168,7 +166,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             >
               <button>
                 <MaterialIcon icon="settings" size={24} color='#DDA342' />
-                <Heading3>App Settings</Heading3>
+                <Heading3>Settings</Heading3>
               </button>
             </NavLink>
           )}
@@ -193,11 +191,5 @@ const NavigationNonAuth = () => {
     </ul>
   )
 }
-
-// const MenuItemBig = ({ route, title, icon }) => (
-//   <NavLink activeClassName="active" to={route} >
-//     <button>{title}</button>
-//   </NavLink>
-// )
 
 export default Navigation;
