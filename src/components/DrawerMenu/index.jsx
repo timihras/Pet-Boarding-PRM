@@ -30,6 +30,7 @@ const Drawer = styled.div`
     margin: ${props => props.theme.sizeM} 0 0 0;
     padding: 0;
     outline: none;
+    cursor: pointer;
   }
 
   ::-webkit-scrollbar-track {
@@ -46,10 +47,6 @@ const Drawer = styled.div`
     border-radius: 10px;
     background-color: ${props => props.theme.mainTextColor};
   }
-
-  @media screen and (max-height: 450px) {
-    padding-top: 15px;
-  }
 `
 
 const MenuButton = styled.button`
@@ -57,6 +54,7 @@ const MenuButton = styled.button`
   border: 0;
   outline: none;
   margin-top: ${props => props.theme.sizeM};
+  cursor: pointer;
 `
 
 const DrawerMenu = (props) => {
