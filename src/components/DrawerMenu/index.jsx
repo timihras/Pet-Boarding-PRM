@@ -1,38 +1,47 @@
 import React from 'react'
+import styled from 'styled-components'
+import MaterialIcon from 'material-icons-react'
+
 import Menu from '../icons/menu-icon'
 import Navigation from '../Navigation'
-import styled from 'styled-components'
 
 const Drawer = styled.div`
     height: 100%;
-    width: 0;
+    width: 100%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: white;
     overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    text-align:center;
+    transition: all 0.5s ease-in-out;
+    padding: ${props => props.theme.sizeS};
 
-  &.closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+  div {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .closebtn {
+    background: none;
+    border: none;
+    margin: ${props => props.theme.sizeM} 0 0 0;
+    padding: 0;
+    outline: none;
   }
 
   @media screen and (max-height: 450px) {
     padding-top: 15px;
   }
+
 `
 
 const MenuButton = styled.button`
-`
-
-const CloseButton = styled.button`
+  background: 0;
+  border: 0;
+  outline: none;
+  margin-top: ${props => props.theme.sizeM};
 `
 
 class DrawerMenu extends React.Component {
@@ -51,13 +60,15 @@ class DrawerMenu extends React.Component {
     const { authUser } = this.props;
 
     return (
-      <div>
-        <Drawer style={isOpen ? { "width": "100%" } : { "width": "0" }}>
-          <CloseButton className="closebtn" onClick={this.toggleMenu}>&times;</CloseButton>
-          <Navigation authUser={authUser} toggleMenu={this.toggleMenu} />
+      <>
+        <Drawer style={isOpen ? { "opacity": 1 } : { "opacity": 0, "padding": 0 }}>
+          <div>
+            <button className="closebtn" onClick={this.toggleMenu}><MaterialIcon icon="close" /></button>
+            <Navigation authUser={authUser} toggleMenu={this.toggleMenu} />
+          </div>
         </Drawer>
         <MenuButton onClick={this.toggleMenu}><Menu /></MenuButton>
-      </div>
+      </>
     )
   }
 }

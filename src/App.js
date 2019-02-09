@@ -17,10 +17,18 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.mainTextColor};
     font-family: ${props => props.theme.generalFont};
     font-size: ${props => props.theme.fontSizeGeneral};
+    margin: 0;
+    padding: 0;
   }
-
+  a {
+    text-decoration: none; 
+  }
   .active{
     color:red;
+  }
+
+  .material-icons {
+    width: 24px;
   }
 `
 
@@ -32,6 +40,7 @@ const theme = {
   fontSizeXS: '1.2rem',
   fontSizeS: '1.3rem',
   fontSizeM: '1.6rem',
+  fontSizeXM: '1.8rem',
   fontSizeL: '1.9rem',
   fontSizeXL: '2rem',
 

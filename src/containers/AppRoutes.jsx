@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
+import { Page } from '../components/styles/page'
 
 import HomePage from './HomePage'
 import SignInPage from './SigninPage'
@@ -10,7 +11,6 @@ import ListsPage from './ListsPage'
 import NotFoundPage from './NotFoundPage'
 import CustomerProfilePage from './CustomerProfilePage'
 import PetProfilePage from './PetProfilePage'
-import Navigation from '../components/Navigation'
 import DrawerMenu from '../components/DrawerMenu'
 import UserAccountPage from './UserAccountPage'
 import PasswordForgetPage from './PasswordForgetPage'
@@ -18,7 +18,7 @@ import SettingsPage from './SettingsPage'
 
 const AppRoutes = ({ authUser }) => (
   <Router>
-    <>
+    <Page>
       {/* <Navigation authUser={authUser} /> */}
       <DrawerMenu authUser={authUser} />
       <Switch>
@@ -34,7 +34,7 @@ const AppRoutes = ({ authUser }) => (
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
         <Route component={NotFoundPage} />
       </Switch>
-    </>
+    </Page>
   </Router>
 )
 
