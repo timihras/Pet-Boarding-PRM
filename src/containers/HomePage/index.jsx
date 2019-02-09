@@ -21,8 +21,10 @@ class HomePage extends Component {
       <>
         <Search />
         <FlexResponsive>
-          <CalendarSummary />
-          <MoreLink><Link to={ROUTES.CALENDAR}>View all →</Link></MoreLink>
+          <div>
+            <CalendarSummary />
+            <MoreLink><Link to={ROUTES.CALENDAR}>View all →</Link></MoreLink>
+          </div>
           <Statistics />
         </FlexResponsive>
       </>

@@ -18,6 +18,7 @@ const FlexResponsive = styled(Flex)`
 `;
 
 const Card = styled.div`
+  background: white;
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
   padding: ${props => props.theme.sizeS};
