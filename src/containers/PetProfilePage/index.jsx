@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 const PetProfilePage = () => {
   return (
     <div>
-      Pet
+      <h1>Pet</h1>
     </div>
-  )
-}
-export default PetProfilePage
+  );
+};
+export default PetProfilePage;

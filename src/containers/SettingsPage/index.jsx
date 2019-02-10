@@ -1,12 +1,12 @@
-import React from 'react'
-import { Switch, Route, Link } from 'react-router-dom'
-import { compose } from 'recompose'
+import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import { compose } from 'recompose';
 
-import { withFirebase } from '../../utils/Firebase'
-import { withAuthorization } from '../../utils/Session'
+import { withFirebase } from '../../utils/Firebase';
+import { withAuthorization } from '../../utils/Session';
 
-import * as ROLES from '../../constants/roles'
-import * as ROUTES from '../../constants/routes'
+import * as ROLES from '../../constants/roles';
+import * as ROUTES from '../../constants/routes';
 
 const SettingsPage = () => (
   <div>
@@ -18,35 +18,32 @@ const SettingsPage = () => (
       <Route exact path={ROUTES.SETTINGS} component={UserList} />
     </Switch>
   </div>
-)
+);
 
 class UserListBase extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       loading: false,
-      users: [],
-    }
+      users: []
+    };
   }
 
   componentDidMount() {
-    this.setState({ loading: true })
+    this.setState({ loading: true });
+    const { firebase } = this.props;
 
-    this.unsubscribe = this.props.firebase
-      .users()
-      .onSnapshot(snapshot => {
-        let users = []
+    this.unsubscribe = firebase.users().onSnapshot(snapshot => {
+      const users = [];
 
-        snapshot.forEach(doc =>
-          users.push({ ...doc.data(), uid: doc.id }),
-        )
+      snapshot.forEach(doc => users.push({ ...doc.data(), uid: doc.id }));
 
-        this.setState({
-          users,
-          loading: false,
-        })
-      })
+      this.setState({
+        users,
+        loading: false
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -77,7 +74,8 @@ class UserListBase extends React.Component {
                   to={{
                     pathname: `${ROUTES.USER}/${user.uid}`,
                     state: { user }
-                  }}>
+                  }}
+                >
                   Details
                 </Link>
               </span>
@@ -85,20 +83,19 @@ class UserListBase extends React.Component {
           ))}
         </ul>
       </div>
-    )
+    );
   }
-
 }
 
 class UserItemBase extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       loading: false,
       user: null,
-      ...props.location.state,
-    }
+      ...props.location.state
+    };
   }
 
   componentDidMount() {
@@ -107,17 +104,17 @@ class UserItemBase extends React.Component {
     }
 
     this.setState({
-      loading: true,
-    })
+      loading: true
+    });
 
     this.unsubscribe = this.props.firebase
       .user(this.props.match.params.id)
       .onSnapshot(snapshot => {
         this.setState({
           user: snapshot.data(),
-          loading: false,
-        })
-      })
+          loading: false
+        });
+      });
   }
 
   componentWillUnmount() {
@@ -148,26 +145,20 @@ class UserItemBase extends React.Component {
               <strong>Username:</strong> {user.username}
             </span>
             <span>
-              <button
-                type="button"
-                onClick={this.onSendPasswordResetEmail}
-              >
+              <button type="button" onClick={this.onSendPasswordResetEmail}>
                 Send Password Reset
               </button>
             </span>
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
-const condition = authUser =>
-  authUser && authUser.roles.includes(ROLES.ADMIN)
+const condition = authUser => authUser && authUser.roles.includes(ROLES.ADMIN);
 
-const UserList = withFirebase(UserListBase)
-const UserItem = withFirebase(UserItemBase)
+const UserList = withFirebase(UserListBase);
+const UserItem = withFirebase(UserItemBase);
 
-export default compose(
-  withAuthorization(condition),
-)(SettingsPage)
+export default compose(withAuthorization(condition))(SettingsPage);

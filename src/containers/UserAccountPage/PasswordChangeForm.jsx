@@ -5,7 +5,7 @@ import { withFirebase } from '../../utils/Firebase';
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
-  error: null,
+  error: null
 };
 
 class PasswordChangeForm extends Component {
@@ -17,8 +17,9 @@ class PasswordChangeForm extends Component {
 
   onSubmit = event => {
     const { passwordOne } = this.state;
+    const { firebase } = this.props;
 
-    this.props.firebase
+    firebase
       .doPasswordUpdate(passwordOne)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
@@ -37,8 +38,7 @@ class PasswordChangeForm extends Component {
   render() {
     const { passwordOne, passwordTwo, error } = this.state;
 
-    const isInvalid =
-      passwordOne !== passwordTwo || passwordOne === '';
+    const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
     return (
       <form onSubmit={this.onSubmit}>

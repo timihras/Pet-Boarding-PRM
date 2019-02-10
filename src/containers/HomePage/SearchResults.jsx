@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-export default function SearchResults() {
-  return (
-    <div>
-      Search Results
-    </div>
-  )
-}
+const SearchResults = () => (
+  <div>
+    <h1>Search Results</h1>
+  </div>
+);
+
+export default SearchResults;

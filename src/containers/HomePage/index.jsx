@@ -1,21 +1,35 @@
-import React, { Component } from 'react'
-import { withAuthorization } from '../../utils/Session'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { withAuthorization } from '../../utils/Session';
 
-import { Page } from '../../components/styles/page'
-import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
+import * as ROUTES from '../../constants/routes';
 
-class HomePage extends Component {
-  render() {
-    return (
-      <Page>
-        <SearchBar />
-        <SearchResults />
-      </Page>
-    )
-  }
-}
+import Search from './Search';
+import Statistics from './Statistics';
+import CalendarSummary from '../CalendarPage/CalendarSummary';
+import { FlexResponsive } from '../../components/styles/page';
 
-const condition = authUser => !!authUser
+const MoreLink = styled.div`
+  text-align: center;
+  margin: ${props => props.theme.sizeL} auto 0;
+`;
 
-export default withAuthorization(condition)(HomePage)
+const HomePage = () => (
+  <>
+    <Search />
+    <FlexResponsive>
+      <div>
+        <CalendarSummary />
+        <MoreLink>
+          <Link to={ROUTES.CALENDAR}>View all →</Link>
+        </MoreLink>
+      </div>
+      <Statistics />
+    </FlexResponsive>
+  </>
+);
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(HomePage);

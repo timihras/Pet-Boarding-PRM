@@ -1,11 +1,12 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const Input = styled.input`
+export const Input = styled.input`
   border: none;
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
   padding: ${props => props.theme.sizeM};
   outline: none;
+  width: 100%;
 
   &::placeholder {
     color: ${props => props.theme.disabledTextColor};
@@ -14,4 +15,4 @@ const Input = styled.input`
   }
 `;
 
-export { Input };
+export const Form = styled.form``;

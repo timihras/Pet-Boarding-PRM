@@ -1,20 +1,18 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
-import MaterialIcon from 'material-icons-react'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import MaterialIcon from 'material-icons-react';
 
-import { AuthUserContext } from '../utils/Session'
-import SignOutLink from './SignOutLink'
+import { AuthUserContext } from '../utils/Session';
+import SignOutLink from './SignOutLink';
 
-import { Heading1, Heading2, Heading3 } from './styles/headings'
-import { Flex } from './styles/page'
+import { Heading1, Heading2, Heading3 } from './styles/headings';
+import { Flex } from './styles/page';
 
-import * as ROUTES from '../constants/routes'
-import * as ROLES from '../constants/roles'
+import * as ROUTES from '../constants/routes';
+import * as ROLES from '../constants/roles';
 
 const QuickActions = styled.div`
-  margin-top: ${props => props.theme.sizeXL};
-
   a {
     height: 16rem;
     flex: 1 0 40%;
@@ -45,15 +43,13 @@ const QuickActions = styled.div`
   a:nth-child(even) {
     margin-left: ${props => props.theme.sizeS};
   }
-  
+
   a:nth-child(odd) {
     margin-right: ${props => props.theme.sizeS};
   }
-`
+`;
 
 const MainMenu = styled.div`
-  margin-top: ${props => props.theme.sizeXL};
-
   a {
     height: 11rem;
     flex: 1 0 20%;
@@ -78,22 +74,28 @@ const MainMenu = styled.div`
       }
     }
   }
-  
+
   a:first-child {
     margin-left: 0;
   }
   a:last-child {
     margin-right: 0;
   }
-`
+`;
 
 const Navigation = ({ toggleMenu }) => (
   <div>
     <AuthUserContext.Consumer>
-      {authUser => authUser ? <NavigationAuth authUser={authUser} toggleMenu={toggleMenu} /> : <NavigationNonAuth />}
+      {authUser =>
+        authUser ? (
+          <NavigationAuth authUser={authUser} toggleMenu={toggleMenu} />
+        ) : (
+          <NavigationNonAuth />
+        )
+      }
     </AuthUserContext.Consumer>
   </div>
-)
+);
 
 const NavigationAuth = ({ authUser, toggleMenu }) => {
   return (
@@ -106,9 +108,11 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             to={ROUTES.LIST}
             onClick={toggleMenu}
           >
-            <button>
-              <MaterialIcon icon="list" size={38} color='#7DA7DB' />
-              <Heading2>Customer &<br /> Pet List</Heading2>
+            <button type="button">
+              <MaterialIcon icon="list" size={38} color="#7DA7DB" />
+              <Heading2>
+                Customer &<br /> Pet List
+              </Heading2>
             </button>
           </NavLink>
 
@@ -117,9 +121,11 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             to={ROUTES.CALENDAR}
             onClick={toggleMenu}
           >
-            <button>
-              <MaterialIcon icon="event_note" size={38} color='#DDA342' />
-              <Heading2>Calendar &<br /> Event List</Heading2>
+            <button type="button">
+              <MaterialIcon icon="event_note" size={38} color="#DDA342" />
+              <Heading2>
+                Calendar &<br /> Event List
+              </Heading2>
             </button>
           </NavLink>
 
@@ -128,9 +134,12 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             to={ROUTES.ADD_WIZARD}
             onClick={toggleMenu}
           >
-            <button>
-              <MaterialIcon icon="pets" size={38} color='#D45983' />
-              <Heading2>Add a new<br /> Pet Wizard</Heading2>
+            <button type="button">
+              <MaterialIcon icon="pets" size={38} color="#D45983" />
+              <Heading2>
+                Add a new
+                <br /> Pet Wizard
+              </Heading2>
             </button>
           </NavLink>
 
@@ -139,9 +148,12 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             to={ROUTES.ADD_EVENT}
             onClick={toggleMenu}
           >
-            <button>
-              <MaterialIcon icon="event" size={38} color='#615375' />
-              <Heading2>Add a new<br /> Event</Heading2>
+            <button type="button">
+              <MaterialIcon icon="event" size={38} color="#615375" />
+              <Heading2>
+                Add a new
+                <br /> Event
+              </Heading2>
             </button>
           </NavLink>
         </Flex>
@@ -151,12 +163,12 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
         <Flex>
           <NavLink
             activeClassName="active"
-            to={ROUTES.ACCOUNT}
+            to={ROUTES.HOME}
             onClick={toggleMenu}
           >
-            <button>
-              <MaterialIcon icon="person" size={24} color='#D45983' />
-              <Heading3>User Settings</Heading3>
+            <button type="button">
+              <MaterialIcon icon="home" size={24} color="#D45983" />
+              <Heading3>Home</Heading3>
             </button>
           </NavLink>
 
@@ -166,38 +178,32 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
               to={ROUTES.SETTINGS}
               onClick={toggleMenu}
             >
-              <button>
-                <MaterialIcon icon="settings" size={24} color='#DDA342' />
-                <Heading3>App Settings</Heading3>
+              <button type="button">
+                <MaterialIcon icon="settings" size={24} color="#DDA342" />
+                <Heading3>Settings</Heading3>
               </button>
             </NavLink>
           )}
 
-          <NavLink
-            activeClassName="active"
-            to={'/'}
-            onClick={toggleMenu}
-          >
+          <NavLink activeClassName="active" to="/" onClick={toggleMenu}>
             <SignOutLink />
           </NavLink>
         </Flex>
       </MainMenu>
     </>
-  )
-}
+  );
+};
 
 const NavigationNonAuth = () => {
   return (
     <ul>
-      <li><NavLink activeClassName="active" to={ROUTES.SIGN_IN}>Sign In</NavLink></li>
+      <li>
+        <NavLink activeClassName="active" to={ROUTES.SIGN_IN}>
+          Sign In
+        </NavLink>
+      </li>
     </ul>
-  )
-}
-
-// const MenuItemBig = ({ route, title, icon }) => (
-//   <NavLink activeClassName="active" to={route} >
-//     <button>{title}</button>
-//   </NavLink>
-// )
+  );
+};
 
 export default Navigation;
