@@ -31,10 +31,6 @@ const GlobalStyle = createGlobalStyle`
   .active{
     color:red;
   }
-
-  .material-icons {
-    width: 24px;
-  }
 `;
 
 const theme = {

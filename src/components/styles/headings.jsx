@@ -38,7 +38,7 @@ export const Heading3 = styled.h3`
   font-weight: 400;
 `;
 
-export const Heading4 = styled.h3`
+export const Heading4 = styled.h4`
   font-family: ${props => props.theme.headingFont};
   font-size: ${props => props.theme.fontSizeGeneral};
   font-weight: 700;
