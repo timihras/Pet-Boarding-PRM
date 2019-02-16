@@ -1,18 +1,23 @@
 ## 100 Days #ZeroToApp challenge // FEB 2019
 
 For this Personal Project I chose something that is very close to me. I and my girlfriend are also running a successful Pet Boarding business. This is a small and agile company that offers unique services to its customers and its furry guests.
-⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+
 I like to say that we are a modern business, but at the moment, all business records are still in paper form, all business transactions are stored in a spreadsheet and all of the reservations are stored in Google Calendar. Many times I tried unsuccessfully to find an app that would suit us. Every app I spot is way too complicated, overwhelming and forces the user to use features that are not needed. My plan is to build a simple app to connect above-mentioned business activities in one place.
-⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+
 Here are the user stories that have to be fulfilled to consider this project a success:
+
 
 1. I have to authenticate to use the app
 2. I can add, view, edit and remove information about customers.
 3. I can add, view, edit and remove information about pets.
 4. I can make a reservation and sync it with Google calendar.
 5. I can do all of the above from a mobile device
-⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+
 Doing all of this will create a great foundation to modernize our business processes. But first, I have to #design the app. Designing a #UI will be my focus for the first few days.
+
 
 ## Available Scripts
 
