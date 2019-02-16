@@ -29,6 +29,12 @@ const SecondaryButton = styled(Button)`
   &:hover {
     background: whitesmoke;
   }
+
+  &:disabled {
+    border-color: ${props => props.theme.disabledTextColor};
+    background-color: ${props => props.theme.lightBgColor};
+    color: ${props => props.theme.disabledTextColor};
+  }
 `;
 
 export { PrimaryButton, SecondaryButton };

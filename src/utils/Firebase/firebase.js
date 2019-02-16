@@ -69,6 +69,23 @@ class Firebase {
   user = uid => this.db.doc(`users/${uid}`);
 
   users = () => this.db.collection('users');
+
+  getCurrentUid() {
+    return this.auth.currentUser && this.auth.currentUser.uid;
+  }
+
+  async getCurrentUserQuote() {
+    const quote = await this.db
+      .doc(`users_codedamn_video/${this.auth.currentUser.uid}`)
+      .get();
+    return quote.get('quote');
+  }
+
+  getCurrentUserUsername(uid) {
+    this.db.doc(`users/${uid}`).onSnapshot(doc => {
+      return doc.data();
+    });
+  }
 }
 
 export default Firebase;

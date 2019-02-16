@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { withAuthorization } from '../../utils/Session';
 
 import * as ROUTES from '../../constants/routes';
@@ -8,12 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import Search from './Search';
 import Statistics from './Statistics';
 import CalendarSummary from '../CalendarPage/CalendarSummary';
-import { FlexResponsive } from '../../components/styles/page';
-
-const MoreLink = styled.div`
-  text-align: center;
-  margin: ${props => props.theme.sizeL} auto 0;
-`;
+import { FlexResponsive, MoreLink } from '../../components/styles/page';
 
 const HomePage = () => (
   <>
