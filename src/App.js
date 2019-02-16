@@ -24,13 +24,29 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
   a {
     color: ${props => props.theme.accentPrimaryColor};
     text-decoration: none; 
   }
-  .active{
+
+  /* .active{
     color:red;
+  } */
+
+  .info {
+    color: ${props => props.theme.infoColor};
   }
+  .danger {
+    color: ${props => props.theme.dangerColor};
+  }
+  .warning {
+    color: ${props => props.theme.warningColor};
+  }
+  .success {
+    color: ${props => props.theme.successColor};
+  }
+  
 `;
 
 const theme = {
@@ -48,6 +64,7 @@ const theme = {
   sizeXS: '1rem',
   sizeS: '1.5rem',
   sizeM: '2rem',
+  sizeXM: '2.5rem',
   sizeL: '3rem',
   sizeXL: '5rem',
 

@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-const Page = styled.div`
+export const Page = styled.div`
   padding: ${props => props.theme.sizeS};
 `;
 
-const Flex = styled.div`
+export const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
-const FlexResponsive = styled(Flex)`
+export const FlexResponsive = styled(Flex)`
   flex-direction: column;
 
   @media only screen and (min-width: ${props => props.theme.tablet}) {
@@ -17,7 +17,12 @@ const FlexResponsive = styled(Flex)`
   }
 `;
 
-const Card = styled.div`
+export const Grid = styled.div`
+  display: grid;
+  grid-column-gap: ${props => props.theme.sizeXS};
+`;
+
+export const Card = styled.div`
   background: white;
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
@@ -25,4 +30,13 @@ const Card = styled.div`
   margin-bottom: ${props => props.theme.sizeXS};
 `;
 
-export { Page, Card, Flex, FlexResponsive };
+export const MoreLink = styled.div`
+  text-align: center;
+  margin: ${props => props.theme.sizeL} auto 0;
+`;
+
+export const FakeLink = styled.div`
+  color: ${props => props.theme.accentPrimaryColor};
+  text-decoration: none;
+  cursor: pointer;
+`;
