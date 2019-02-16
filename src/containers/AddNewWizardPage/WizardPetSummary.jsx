@@ -23,6 +23,7 @@ const WizardPetSummary = ({ state }) => {
     font-size: ${props => props.theme.fontSizeXS};
     p {
       margin-top: 0;
+      margin-bottom: 0.5rem;
     }
   `;
 
