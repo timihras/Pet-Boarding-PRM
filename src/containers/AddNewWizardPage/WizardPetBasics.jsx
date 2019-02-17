@@ -58,8 +58,8 @@ const WizardPetBasics = ({ state }) => {
 const LabelButton = styled.label`
   height: 16rem;
   flex: 1 0 40%;
-  margin-top: ${props => props.theme.sizeS};
-  margin-bottom: ${props => props.theme.sizeS};
+  margin-top: ${props => props.theme.sizeXS};
+  margin-bottom: ${props => props.theme.sizeXS};
 
   div {
     justify-content: space-between;
@@ -78,11 +78,11 @@ const LabelButton = styled.label`
   }
 
   &:nth-child(even) {
-    margin-left: ${props => props.theme.sizeS};
+    margin-left: ${props => props.theme.sizeXS};
   }
 
   &:nth-child(odd) {
-    margin-right: ${props => props.theme.sizeS};
+    margin-right: ${props => props.theme.sizeXS};
   }
 
   &:checked ~ div {
