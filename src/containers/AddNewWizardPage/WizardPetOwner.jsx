@@ -116,6 +116,8 @@ const WizardPetOwner = ({ state }) => {
           placeholder="Email"
           name="email"
           value={state.owner.email}
+          type="email"
+          required
           onChange={e =>
             dispatch({
               type: 'edit',

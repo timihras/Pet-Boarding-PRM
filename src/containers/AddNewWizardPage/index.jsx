@@ -16,8 +16,6 @@ import { Input } from '../../components/styles/form';
 import { Flex } from '../../components/styles/page';
 
 const ButtonWrapper = styled(Flex)`
-  position: fixed;
-  bottom: 0;
   width: calc(100vw - 30px);
   justify-content: space-around;
   margin: ${props => props.theme.sizeXL} 0;
@@ -81,7 +79,23 @@ const AddNewWizardPage = () => {
   const [page, setPage] = useState(1);
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  const valid = state.petName && state.petType;
+  const valid = () => {
+    if (page === 1) return state.petName && !state.petType.all;
+    if (page === 2)
+      return (
+        state.petBreed &&
+        state.petGender !== 'all' &&
+        (state.petDOB.year || state.petDOB.month || state.petDOB.day)
+      );
+    if (page === 3) return true;
+    if (page === 4)
+      return (
+        (state.owner.firstName || state.owner.firstName) &&
+        (state.owner.phoneNumber || state.owner.email)
+      );
+
+    return false;
+  };
 
   return (
     <WizardCtx.Provider value={dispatch}>
@@ -104,7 +118,7 @@ const AddNewWizardPage = () => {
             Submit
           </PrimaryButton>
         ) : (
-          <PrimaryButton disabled={!valid} onClick={() => setPage(page + 1)}>
+          <PrimaryButton disabled={!valid()} onClick={() => setPage(page + 1)}>
             next →
           </PrimaryButton>
         )}

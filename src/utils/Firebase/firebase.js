@@ -86,6 +86,12 @@ class Firebase {
       return doc.data();
     });
   }
+
+  // *** Customer API ***
+
+  customer = uid => this.db.doc(`customers/${uid}`);
+
+  customers = () => this.db.collection('customers');
 }
 
 export default Firebase;

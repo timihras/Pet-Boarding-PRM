@@ -15,6 +15,12 @@ const Button = styled.button`
   &:hover {
     opacity: 0.9;
   }
+
+  &:disabled {
+    border-color: ${props => props.theme.disabledTextColor};
+    background-color: ${props => props.theme.lightBgColor};
+    color: ${props => props.theme.disabledTextColor};
+  }
 `;
 
 const PrimaryButton = styled(Button)`
