@@ -84,6 +84,7 @@ const DrawerMenu = props => {
           />
         </div>
       </Drawer>
+
       <MenuButton onClick={() => toggleMenu(!isOpen)}>
         <Menu />
       </MenuButton>

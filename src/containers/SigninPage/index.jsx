@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
@@ -7,13 +8,30 @@ import { withFirebase } from '../../utils/Firebase';
 import * as ROUTES from '../../constants/routes';
 import { PasswordForgetLink } from '../PasswordForgetPage';
 
+import Logo from '../../components/icons/logo';
+import { Form, Input } from '../../components/styles/form';
+import { Heading2 } from '../../components/styles/headings';
+import { PrimaryButton } from '../../components/styles/buttons';
+
+const Layout = styled.div`
+  text-align: center;
+
+  svg {
+    margin-top: ${props => props.theme.sizeXL};
+  }
+
+  form {
+    margin-bottom: ${props => props.theme.sizeXL};
+    margin-top: ${props => props.theme.sizeXL};
+  }
+`;
+
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
+  <Layout>
+    <Logo />
     <SignInForm />
-    <PasswordForgetLink />
     <SignUpLink />
-  </div>
+  </Layout>
 );
 
 const INITIAL_STATE = {
@@ -56,27 +74,29 @@ class SignInFormBase extends React.Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <Form onSubmit={this.onSubmit}>
+        <Input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <input
+        <Input
           name="password"
           value={password}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+        <PasswordForgetLink />
+        <Heading2>Login</Heading2>
+        <PrimaryButton disabled={isInvalid} type="submit">
+          &rarr;
+        </PrimaryButton>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }

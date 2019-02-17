@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { withAuthorization } from '../../utils/Session';
+
 const PetProfilePage = () => {
   return (
     <div>
@@ -7,4 +9,9 @@ const PetProfilePage = () => {
     </div>
   );
 };
-export default PetProfilePage;
+
+// export default PetProfilePage;
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(PetProfilePage);

@@ -117,7 +117,7 @@ class SignUpFormBase extends React.Component {
           type="password"
           placeholder="Confirm Password"
         />
-        <label htmlFor="is-admin">
+        {/* <label htmlFor="is-admin">
           Admin:
           <input
             id="is-admin"
@@ -126,7 +126,7 @@ class SignUpFormBase extends React.Component {
             checked={isAdmin}
             onChange={this.onChangeCheckbox}
           />
-        </label>
+        </label> */}
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>

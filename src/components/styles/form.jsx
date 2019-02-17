@@ -31,4 +31,8 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const Form = styled.form``;
+export const Form = styled.form`
+  input {
+    margin-bottom: ${props => props.theme.sizeXS};
+  }
+`;

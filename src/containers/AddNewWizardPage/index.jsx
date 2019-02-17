@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from 'react';
 import styled from 'styled-components';
+import { withAuthorization } from '../../utils/Session';
 
 import WizardPetBasics from './WizardPetBasics';
 import WizardPetInfo from './WizardPetInfo';
@@ -141,4 +142,8 @@ const WizardPetEmergencyContact = () => (
   </div>
 );
 
-export default AddNewWizardPage;
+// export default AddNewWizardPage;
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(AddNewWizardPage);

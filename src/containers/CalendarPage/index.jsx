@@ -1,4 +1,5 @@
 import React from 'react';
+import { withAuthorization } from '../../utils/Session';
 // import { withFirebase } from '../../utils/Firebase';
 
 const CalendarPage = () => {
@@ -32,4 +33,8 @@ const CalendarPage = () => {
 
 // const UserDetails = withFirebase(UserDetailsBase);
 
-export default CalendarPage;
+// export default CalendarPage;
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(CalendarPage);

@@ -133,3 +133,5 @@ export default compose(
   withFirebase,
   withAuthorization(condition)
 )(AddNewCustomerPage);
+
+// export default withFirebase(AddNewCustomerPage);

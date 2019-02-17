@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { compose } from 'recompose';
 import { withFirebase } from '../../utils/Firebase';
+import { withAuthorization } from '../../utils/Session';
 
 const CustomerListBase = props => {
   const { firebase } = props;
@@ -28,4 +30,9 @@ const CustomerListBase = props => {
   );
 };
 
-export default withFirebase(CustomerListBase);
+const condition = authUser => !!authUser;
+
+export default compose(
+  withFirebase,
+  withAuthorization(condition)
+)(CustomerListBase);
