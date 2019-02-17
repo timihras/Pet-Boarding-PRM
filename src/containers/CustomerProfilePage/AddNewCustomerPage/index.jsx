@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
+import { compose } from 'recompose';
 import { withFirebase } from '../../../utils/Firebase';
 
-import { AuthUserContext } from '../../../utils/Session';
+import { AuthUserContext, withAuthorization } from '../../../utils/Session';
 
 const AddNewCustomerPage = props => {
   const initialFormValues = {
@@ -26,8 +27,6 @@ const AddNewCustomerPage = props => {
       createdBy: authUser.uid,
       createdOn: new Date()
     });
-
-    // alert(JSON.stringify(values));
 
     setValues(initialFormValues);
   };
@@ -65,4 +64,9 @@ const AddNewCustomerPage = props => {
   );
 };
 
-export default withFirebase(AddNewCustomerPage);
+const condition = authUser => !!authUser;
+
+export default compose(
+  withFirebase,
+  withAuthorization(condition)
+)(AddNewCustomerPage);
