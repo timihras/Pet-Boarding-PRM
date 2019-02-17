@@ -17,6 +17,7 @@ import UserAccountPage from './UserAccountPage';
 import PasswordForgetPage from './PasswordForgetPage';
 import SettingsPage from './SettingsPage';
 import CalendarPage from './CalendarPage';
+import AddNewEventPage from './CalendarPage/AddNewEventPage';
 
 const AppRoutes = ({ authUser }) => (
   <Router>
@@ -37,7 +38,7 @@ const AppRoutes = ({ authUser }) => (
         <Route path={ROUTES.ADD_WIZARD} component={AddNewWizardPage} />
 
         <Route path={ROUTES.CALENDAR} component={CalendarPage} />
-        <Route path={ROUTES.ADD_EVENT} component={AddNewWizardPage} />
+        <Route path={ROUTES.ADD_EVENT} component={AddNewEventPage} />
 
         <Route component={NotFoundPage} />
       </Switch>

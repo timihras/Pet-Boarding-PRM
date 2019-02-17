@@ -59,17 +59,17 @@ class UserListBase extends React.Component {
         {loading && <div>Loading...</div>}
         <ul>
           {users.map(user => (
-            <li key={user.id}>
-              <span>
-                <strong>ID: </strong> {user.id}
-              </span>
-              <span>
+            <li key={user.uid}>
+              <div>
+                <strong>ID: </strong> {user.uid}
+              </div>
+              <div>
                 <strong>E-Mail: </strong> {user.email}
-              </span>
-              <span>
+              </div>
+              <div>
                 <strong>Username: </strong> {user.username}
-              </span>
-              <span>
+              </div>
+              <div>
                 <Link
                   to={{
                     pathname: `${ROUTES.USER}/${user.uid}`,
@@ -78,7 +78,7 @@ class UserListBase extends React.Component {
                 >
                   Details
                 </Link>
-              </span>
+              </div>
             </li>
           ))}
         </ul>
