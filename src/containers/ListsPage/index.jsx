@@ -1,22 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 import { withAuthorization } from '../../utils/Session';
-import { withFirebase } from '../../utils/Firebase';
+import CustomersList from './CustomersList';
 
 const ListsPage = () => (
   <div>
-    <h1>Customer & Pet List</h1>
+    <h1>Customer List</h1>
+    <CustomersList />
+    <p>
+      <Link to={ROUTES.ADD_CUSTOMER}>Add customer &rarr;</Link>
+    </p>
+    <h1>Pet List</h1>
     <p>In construction...</p>
-
-    <CustomerList />
+    <p>
+      <Link to={ROUTES.ADD_PET}>Add Pet &rarr;</Link>
+    </p>
   </div>
 );
-
-const CustomerListBase = () => {
-  return <div />;
-};
-
-const CustomerList = withFirebase(CustomerListBase);
 
 const condition = authUser => !!authUser;
 

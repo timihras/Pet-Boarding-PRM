@@ -17,6 +17,16 @@ export const FlexResponsive = styled(Flex)`
   }
 `;
 
+export const FlexThird = styled(Flex)`
+  input {
+    flex: 1 0 50%;
+  }
+  input:first-child {
+    flex: 1 0 30%;
+    margin-right: ${props => props.theme.sizeS};
+  }
+`;
+
 export const Grid = styled.div`
   display: grid;
   grid-column-gap: ${props => props.theme.sizeXS};
