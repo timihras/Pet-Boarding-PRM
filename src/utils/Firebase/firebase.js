@@ -27,10 +27,10 @@ class Firebase {
   // Methods that handle authentication from firebase/auth
 
   doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+    this.auth.createUserWithEmailAndPassword(email.trim(), password);
 
   doSignInWithEmailAndPassword = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+    this.auth.signInWithEmailAndPassword(email.trim(), password);
 
   doSignOut = () => this.auth.signOut();
 

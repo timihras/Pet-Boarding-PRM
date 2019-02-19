@@ -6,6 +6,7 @@ const PetProfilePage = () => {
   return (
     <div>
       <h1>Pet</h1>
+      <p>Page in construction...</p>
     </div>
   );
 };

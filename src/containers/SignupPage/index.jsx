@@ -1,10 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { withFirebase } from '../../utils/Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
+
+import { Form, Input } from '../../components/styles/form';
+import { Heading1 } from '../../components/styles/headings';
+import { PrimaryButton } from '../../components/styles/buttons';
 
 const INITIAL_STATE = {
   username: '',
@@ -15,11 +20,30 @@ const INITIAL_STATE = {
   error: null
 };
 
+const Layout = styled.div`
+  svg {
+    margin-top: ${props => props.theme.sizeXL};
+  }
+
+  form {
+    margin-bottom: ${props => props.theme.sizeL};
+    margin-top: ${props => props.theme.sizeXL};
+  }
+
+  div {
+    text-align: center;
+  }
+`;
+
+const SignUpButton = styled(PrimaryButton)`
+  margin-top: ${props => props.theme.sizeL};
+`;
+
 const SignUpPage = () => (
-  <div>
-    <h1>Sign Up</h1>
+  <Layout>
+    <Heading1>Sign Up</Heading1>
     <SignUpForm />
-  </div>
+  </Layout>
 );
 
 class SignUpFormBase extends React.Component {
@@ -88,29 +112,29 @@ class SignUpFormBase extends React.Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <Form onSubmit={this.onSubmit}>
+        <Input
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
           placeholder="Full Name"
         />
-        <input
+        <Input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <input
+        <Input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
         />
-        <input
+        <Input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
@@ -127,12 +151,14 @@ class SignUpFormBase extends React.Component {
             onChange={this.onChangeCheckbox}
           />
         </label> */}
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+        <div>
+          <SignUpButton disabled={isInvalid} type="submit">
+            Sign Up
+          </SignUpButton>
+        </div>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }
