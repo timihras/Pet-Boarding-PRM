@@ -1,17 +1,20 @@
 import React from 'react';
-import MaterialIcon from 'material-icons-react';
+import { Icon } from '@blueprintjs/core';
+
+const icon = 'calendar';
+const iconSize = Icon.SIZE_STANDARD;
 
 export const getMetaData = type => {
   switch (type) {
     case 'Arrival':
-      return <MaterialIcon size={19} icon="meeting_room" color="#6DBC70" />;
+      return <Icon icon={icon} iconSize={iconSize} />;
     case 'Departure':
-      return <MaterialIcon size={19} icon="no_meeting_room" color="#7DA7DB" />;
+      return <Icon icon={icon} iconSize={iconSize} />;
     case 'Meeting':
-      return <MaterialIcon size={19} icon="question_answer" color="#DDA342" />;
+      return <Icon icon={icon} iconSize={iconSize} />;
 
     default:
-      return <MaterialIcon size={19} icon="event_note" color="#E1688A" />;
+      return <Icon icon={icon} iconSize={iconSize} />;
   }
 };
 

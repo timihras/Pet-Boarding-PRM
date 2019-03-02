@@ -3,7 +3,7 @@ import { compose } from 'recompose';
 import { withFirebase } from '../../utils/Firebase';
 import { withAuthorization } from '../../utils/Session';
 
-const CustomerListBase = props => {
+const CustomersList = props => {
   const { firebase } = props;
   const [state, setState] = useState({ loading: true, customers: [] });
 
@@ -20,6 +20,9 @@ const CustomerListBase = props => {
   return (
     <div>
       {loading && <div>Loading...</div>}
+
+      {customers && customers.length === 0 && <p>No customers found..</p>}
+
       {customers &&
         customers.map(customer => (
           <div key={customer.uid}>
@@ -35,4 +38,4 @@ const condition = authUser => !!authUser;
 export default compose(
   withFirebase,
   withAuthorization(condition)
-)(CustomerListBase);
+)(CustomersList);

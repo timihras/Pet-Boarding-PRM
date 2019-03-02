@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import MaterialIcon from 'material-icons-react';
+// import MaterialIcon from 'material-icons-react';
 
 import Menu from '../icons/menu-icon';
 import Navigation from '../Navigation';
@@ -76,7 +76,7 @@ const DrawerMenu = props => {
             className="closebtn"
             onClick={() => toggleMenu(!isOpen)}
           >
-            <MaterialIcon icon="close" />
+            {/* <MaterialIcon icon="close" /> */}
           </button>
           <Navigation
             authUser={authUser}

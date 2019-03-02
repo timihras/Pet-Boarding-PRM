@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MaterialIcon from 'material-icons-react';
+// import MaterialIcon from 'material-icons-react';
 import moment from 'moment';
 
 import { Flex, MoreLink, FakeLink, Card } from '../../components/styles/page';
@@ -82,7 +82,7 @@ const WizardPetSummary = ({ state }) => {
         <SummaryCard>
           <Flex>
             <IconWrapper>
-              <MaterialIcon icon="pets" color="rgba(125, 167, 219, 1)" />
+              {/* <MaterialIcon icon="pets" color="rgba(125, 167, 219, 1)" /> */}
             </IconWrapper>
             <div className="flex80">
               <Heading4>
@@ -120,7 +120,7 @@ const WizardPetSummary = ({ state }) => {
         <SummaryCard>
           <Flex>
             <IconWrapper>
-              <MaterialIcon icon="person" color="rgba(221, 163, 66, 1)" />
+              {/* <MaterialIcon icon="person" color="rgba(221, 163, 66, 1)" /> */}
             </IconWrapper>
             <div className="flex80">
               <Heading4>

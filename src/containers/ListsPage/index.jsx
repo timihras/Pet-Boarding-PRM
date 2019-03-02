@@ -4,6 +4,7 @@ import * as ROUTES from '../../constants/routes';
 
 import { withAuthorization } from '../../utils/Session';
 import CustomersList from './CustomersList';
+import PetsList from './PetsList';
 
 const ListsPage = () => (
   <div>
@@ -13,7 +14,7 @@ const ListsPage = () => (
       <Link to={ROUTES.ADD_CUSTOMER}>Add customer &rarr;</Link>
     </p>
     <h1>Pet List</h1>
-    <p>In construction...</p>
+    <PetsList />
     <p>
       <Link to={ROUTES.ADD_PET}>Add Pet &rarr;</Link>
     </p>

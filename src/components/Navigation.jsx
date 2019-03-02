@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import MaterialIcon from 'material-icons-react';
+// import MaterialIcon from 'material-icons-react';
 
 import { AuthUserContext } from '../utils/Session';
 import SignOutLink from './SignOutLink';
@@ -109,7 +109,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="list" size={38} color="#7DA7DB" />
+              {/* <MaterialIcon icon="list" size={38} color="#7DA7DB" /> */}
               <Heading2>
                 Customer &<br /> Pet List
               </Heading2>
@@ -122,7 +122,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="event_note" size={38} color="#DDA342" />
+              {/* <MaterialIcon icon="event_note" size={38} color="#DDA342" /> */}
               <Heading2>
                 Calendar &<br /> Event List
               </Heading2>
@@ -135,7 +135,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="pets" size={38} color="#D45983" />
+              {/* <MaterialIcon icon="pets" size={38} color="#D45983" /> */}
               <Heading2>
                 Add a new
                 <br /> Pet Wizard
@@ -149,7 +149,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="event" size={38} color="#615375" />
+              {/* <MaterialIcon icon="event" size={38} color="#615375" /> */}
               <Heading2>
                 Add a new
                 <br /> Event
@@ -167,7 +167,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="home" size={24} color="#D45983" />
+              {/* <MaterialIcon icon="home" size={24} color="#D45983" /> */}
               <Heading3>Home</Heading3>
             </button>
           </NavLink>
@@ -179,7 +179,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
               onClick={toggleMenu}
             >
               <button type="button">
-                <MaterialIcon icon="settings" size={24} color="#DDA342" />
+                {/* <MaterialIcon icon="settings" size={24} color="#DDA342" /> */}
                 <Heading3>Settings</Heading3>
               </button>
             </NavLink>
