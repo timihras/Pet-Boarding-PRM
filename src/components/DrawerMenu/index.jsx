@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import MaterialIcon from 'material-icons-react';
+import { Icon18 } from '../styles/icons';
 
 import Menu from '../icons/menu-icon';
 import Navigation from '../Navigation';
@@ -76,7 +76,7 @@ const DrawerMenu = props => {
             className="closebtn"
             onClick={() => toggleMenu(!isOpen)}
           >
-            {/* <MaterialIcon icon="close" /> */}
+            <Icon18 iconName="ChromeClose" className="ms-IconExample" />
           </button>
           <Navigation
             authUser={authUser}

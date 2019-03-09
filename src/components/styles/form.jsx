@@ -32,11 +32,15 @@ export const TextArea = styled.textarea`
 `;
 
 export const Form = styled.form`
-  input {
+  > input {
     margin-bottom: ${props => props.theme.sizeXS};
   }
-  div {
-    margin-bottom: ${props => props.theme.sizeM};
+  > div {
+    margin-bottom: ${props => props.theme.sizeXS};
+  }
+
+  .slider {
+    touch-action: manipulation;
   }
 `;
 

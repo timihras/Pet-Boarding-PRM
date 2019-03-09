@@ -1,5 +1,4 @@
 import React from 'react';
-import MaterialIcon from 'material-icons-react';
 
 import { withAuthorization } from '../../utils/Session';
 
@@ -24,11 +23,6 @@ const HomePage = () => (
       <Input placeholder="Iskanje" />
     </div>
     <Card>Test</Card>
-    <MaterialIcon icon="grain" />
-    <MaterialIcon icon="blur_on" />
-    <MaterialIcon icon="graphic_eq" />
-    <MaterialIcon icon="dashboard" />
-    <MaterialIcon icon="close" />
   </Page>
 );
 

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { WizardCtx } from './index';
 
 import { Heading1, Heading4 } from '../../components/styles/headings';
-import { Flex, Grid } from '../../components/styles/page';
+import { Flex, Grid, GridDob } from '../../components/styles/page';
 import { Input } from '../../components/styles/form';
 
 import DogIllustration from '../../components/icons/dog-illustration-bw';
@@ -29,11 +29,6 @@ const GridBreed = styled(Grid)`
       padding: 5px;
     }
   }
-`;
-
-const GridDob = styled(Grid)`
-  grid-template-columns: 2fr 3fr 2fr;
-  grid-gap: ${props => props.theme.sizeM};
 `;
 
 // const SliderWithTooltip = createSliderWithTooltip(Slider);

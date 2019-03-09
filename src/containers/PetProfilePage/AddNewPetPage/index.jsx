@@ -1,255 +1,286 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
+import {
+  DefaultButton,
+  PrimaryButton
+} from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { withAuthorization } from '../../../utils/Session';
-import { Heading1, Heading4 } from '../../../components/styles/headings';
-import { Form, InputFloat } from '../../../components/styles/form';
-import { Flex } from '../../../components/styles/page';
-import MaleIcon from '../../../components/icons/male-icon';
-import FemaleIcon from '../../../components/icons/female-icon';
+import { H1 } from '../../../components/styles/headings';
+import { Form } from '../../../components/styles/form';
+import { GridDob } from '../../../components/styles/page';
 
-export const initialPetType = {
-  all: false,
-  dog: false,
-  cat: false,
-  rodent: false,
-  other: false
-};
-
-const initialState = {
+const initialValues = {
   petName: '',
-  petType: {
-    ...initialPetType,
-    all: true
-  },
+  petType: '',
   petBreed: '',
-  petSize: '',
-  petGender: 'all',
+  petSize: 20,
+  petGender: '',
   petDOB: {
-    day: '',
+    day: undefined,
     month: '',
-    year: ''
+    year: undefined
   },
-  petNeutered: 'all',
-  petAggresive: 'all',
+  petNeutered: false,
+  petAggresive: false,
   petNotes: ''
 };
+const today = new Date();
+const validationSchema = Yup.object().shape({
+  petName: Yup.string()
+    .min(3)
+    .required('Required'),
+  petBreed: Yup.string()
+    .min(3)
+    .required('Required'),
+  petDOB: Yup.object().shape({
+    day: Yup.number()
+      .min(1, 'Choose between 1 and 31')
+      .max(31, 'Choose between 1 and 31')
+      .transform((cv, ov) => {
+        return ov === '' ? undefined : cv;
+      }), // Check if the string is Empty
+    year: Yup.number()
+      .min(1900, 'Year does not exist')
+      .max(today.getFullYear(), 'Year does not exist')
+      .transform((cv, ov) => {
+        return ov === '' ? undefined : cv;
+      }) // Check if the string is Empty
+  }),
+  petNeutered: Yup.boolean(),
+  petAggresive: Yup.boolean()
+});
 
 const AddNewPetPage = () => {
-  const [values, setValues] = useState(initialState);
-
-  const onCreatePet = () => {
-    console.log(values);
-  };
-
-  const onChange = e => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
-
-  const onToggle = e => {
-    setValues({ ...values, [e.target.name]: e.currentTarget.value });
-  };
-
   return (
     <div>
-      <Heading1>Add New Pet</Heading1>
-      <Form onSubmit={onCreatePet}>
-        <InputFloat htmlFor="petName">
-          <input
-            name="petName"
-            type="text"
-            value={values.petName}
-            placeholder="Click here and type the name of your pet."
-            onChange={onChange}
-          />
-          <span>Pet Name</span>
-        </InputFloat>
-        <InputFloat>
-          <input
-            name="petBreed"
-            type="text"
-            placeholder="Type the breed of your pet."
-            value={values.petBreed}
-            onChange={onChange}
-          />
-          <span>Pet Breed</span>
-        </InputFloat>
-        <InputFloat>
-          <input
-            name="petSize"
-            type="number"
-            placeholder="What is the size of your pet?"
-            value={values.petSize}
-            onChange={onChange}
-          />
-          <span>Pet Size</span>
-        </InputFloat>
-        <Heading4>Gender</Heading4>
-        <Flex>
-          <label htmlFor="petGender-male">
-            <input
-              type="radio"
-              name="petGender"
-              id="petGender-male"
-              value="male"
-              checked={values.petGender === 'male'}
-              onChange={onToggle}
-            />
-            <MaleIcon />
-            Male
-          </label>
-          <label htmlFor="petGender-female">
-            <input
-              type="radio"
-              name="petGender"
-              id="petGender-female"
-              value="female"
-              checked={values.petGender === 'female'}
-              onChange={onToggle}
-            />
-            <FemaleIcon />
-            Female
-          </label>
-        </Flex>
-      </Form>
+      <H1>Add a new pet</H1>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
+        {props => {
+          const {
+            values,
+            errors,
+            dirty,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            handleReset,
+            isSubmitting,
+            setFieldValue
+          } = props;
+          return (
+            <Form onSubmit={handleSubmit}>
+              <TextField
+                errorMessage={touched.petName ? errors.petName : ''}
+                label="Pet Name"
+                name="petName"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Type your pet name"
+                type="text"
+                value={values.petName}
+              />
+              <ChoiceGroup
+                defaultSelectedKey={values.petType}
+                label="Pet Type"
+                name="petType"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                options={[
+                  {
+                    key: 'dog',
+                    iconProps: { iconName: 'Cat' },
+                    text: 'Dog',
+                    value: 'dog'
+                  },
+                  {
+                    key: 'cat',
+                    iconProps: { iconName: 'Cat' },
+                    text: 'Cat',
+                    value: 'cat'
+                  },
+                  {
+                    key: 'rodent',
+                    iconProps: { iconName: 'Cat' },
+                    text: 'Rodent',
+                    value: 'rodent'
+                  },
+                  {
+                    key: 'other',
+                    iconProps: { iconName: 'Cat' },
+                    text: 'Other',
+                    value: 'other'
+                  }
+                ]}
+              />
+              <TextField
+                errorMessage={touched.petBreed ? errors.petBreed : ''}
+                label="Pet Breed"
+                name="petBreed"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Type the breed of your pet"
+                type="text"
+                value={values.petBreed}
+              />
+              <Slider
+                className="slider"
+                label="Pet Size"
+                name="petSize"
+                min={1}
+                max={100}
+                step={1}
+                defaultValue={values.petSize}
+                valueFormat={value => `${value} kg`}
+                showValue
+                onChange={value => setFieldValue('petSize', value)}
+                touch-action="none"
+              />
+              <GridDob>
+                <TextField
+                  errorMessage={
+                    touched.petDOB && touched.petDOB.day && errors.petDOB
+                      ? errors.petDOB.day
+                      : ''
+                  }
+                  label="Day"
+                  name="petDOB.day"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Day"
+                  type="number"
+                  value={values.petDOB.day}
+                />
+                <Dropdown
+                  defaultSelectedKey={values.petDOB.month}
+                  name="petDOB.month"
+                  placeholder="Choose a Month"
+                  label="Month"
+                  ariaLabel="Choose a Month"
+                  onBlur={handleBlur}
+                  onChange={(e, item) =>
+                    setFieldValue('petDOB.month', item.key)
+                  }
+                  options={[
+                    { key: '1', text: 'January' },
+                    { key: '2', text: 'February' },
+                    { key: '3', text: 'March' },
+                    { key: '4', text: 'April' },
+                    { key: '5', text: 'May' },
+                    { key: '6', text: 'June' },
+                    { key: '7', text: 'July' },
+                    { key: '8', text: 'August' },
+                    { key: '9', text: 'September' },
+                    { key: '10', text: 'October' },
+                    { key: '11', text: 'November' },
+                    { key: '12', text: 'December' }
+                  ]}
+                />
+                <TextField
+                  errorMessage={
+                    touched.petDOB && touched.petDOB.year && errors.petDOB
+                      ? errors.petDOB.year
+                      : ''
+                  }
+                  label="Year"
+                  name="petDOB.year"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Year"
+                  type="number"
+                  value={values.petDOB.year}
+                />
+              </GridDob>
+              <ChoiceGroup
+                defaultSelectedKey={values.petGender}
+                label="Pet Gender"
+                name="petGender"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                options={[
+                  {
+                    key: 'male',
+                    text: 'Male',
+                    iconProps: { iconName: 'Cat' },
+                    value: 'male'
+                  },
+                  {
+                    key: 'female',
+                    text: 'Female',
+                    iconProps: { iconName: 'Cat' },
+                    value: 'female'
+                  }
+                ]}
+              />
+              <Toggle
+                defaultChecked={values.petNeutered}
+                name="petNeutered"
+                label="Is your pet neutered?"
+                inlineLabel
+                onText="Yes"
+                offText="No"
+                onBlur={handleBlur}
+                onChange={(e, checked) => setFieldValue('petNeutered', checked)}
+              />
+              <Toggle
+                defaultChecked={values.petAggresive}
+                name="petAggresive"
+                label="Is your pet Aggresive?"
+                inlineLabel
+                onText="Yes"
+                offText="No"
+                onBlur={handleBlur}
+                onChange={(e, checked) =>
+                  setFieldValue('petAggresive', checked)
+                }
+              />
+              <TextField
+                errorMessage={touched.petNotes ? errors.petNotes : ''}
+                name="petNotes"
+                label="Notes"
+                multiline={values.petNotes.length > 50}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Type anything important about your pet"
+                value={values.petNotes}
+              />
+              <DefaultButton
+                type="button"
+                className="outline"
+                onClick={handleReset}
+                disabled={!dirty || isSubmitting}
+              >
+                Reset
+              </DefaultButton>
+              <PrimaryButton type="submit" disabled={isSubmitting}>
+                Submit
+              </PrimaryButton>
+
+              {/* <DisplayFormikState {...props} /> */}
+            </Form>
+          );
+        }}
+      </Formik>
     </div>
   );
 };
 
 const condition = authUser => !!authUser;
 export default withAuthorization(condition)(AddNewPetPage);
-
-// import React, { useState, useContext } from 'react';
-// import styled from 'styled-components';
-// import { compose } from 'recompose';
-// import { withFirebase } from '../../../utils/Firebase';
-
-// import { Heading1 } from '../../../components/styles/headings';
-// import { Flex, FakeLink, FlexThird } from '../../../components/styles/page';
-// import { Input } from '../../../components/styles/form';
-// import { PrimaryButton } from '../../../components/styles/buttons';
-
-// import { AuthUserContext, withAuthorization } from '../../../utils/Session';
-
-// const Layout = styled.form`
-//   margin-bottom: ${props => props.theme.sizeL};
-
-//   input {
-//     margin-bottom: ${props => props.theme.sizeXS};
-//   }
-//   .mt-1 {
-//     margin-top: ${p => p.theme.sizeL};
-//     justify-content: space-around;
-//     align-items: center;
-//   }
-// `;
-
-// const AddNewCustomerPage = props => {
-//   const initialFormValues = {
-//     firstName: '',
-//     lastName: '',
-//     address: '',
-//     postCode: '',
-//     city: '',
-//     phoneNumber: '',
-//     email: ''
-//   };
-
-//   const [values, setValues] = useState(initialFormValues);
-//   const authUser = useContext(AuthUserContext);
-//   const { firebase, history } = props;
-
-//   const onChange = e => {
-//     setValues({ ...values, [e.target.name]: e.target.value });
-//   };
-
-//   const onClearForm = () => {
-//     setValues(initialFormValues);
-//   };
-
-//   const onCreateUser = e => {
-//     e.preventDefault();
-
-//     firebase.customers().add({
-//       ...values,
-//       _createdBy: authUser.uid,
-//       _createdOn: new Date()
-//     });
-
-//     // alert(JSON.stringify(values));
-
-//     setValues(initialFormValues);
-//     history.goBack();
-//   };
-
-//   return (
-//     <Layout onSubmit={onCreateUser}>
-//       <Heading1>Add new Customer</Heading1>
-//       <Input
-//         placeholder="First Name"
-//         name="firstName"
-//         type="text"
-//         value={values.firstName}
-//         onChange={onChange}
-//         autoFocus
-//       />
-//       <Input
-//         placeholder="Last Name"
-//         name="lastName"
-//         type="text"
-//         value={values.lastName}
-//         onChange={onChange}
-//       />
-//       <Input
-//         placeholder="Address"
-//         name="address"
-//         type="text"
-//         value={values.address}
-//         onChange={onChange}
-//       />
-//       <FlexThird>
-//         <Input
-//           placeholder="Post Code"
-//           name="postCode"
-//           type="text"
-//           value={values.postCode}
-//           onChange={onChange}
-//         />
-//         <Input
-//           placeholder="City"
-//           name="city"
-//           type="text"
-//           value={values.city}
-//           onChange={onChange}
-//         />
-//       </FlexThird>
-//       <div className="mt-1">
-//         <Input
-//           placeholder="Phone Number"
-//           name="phoneNumber"
-//           type="text"
-//           value={values.phoneNumber}
-//           onChange={onChange}
-//         />
-//         <Input
-//           placeholder="Email"
-//           name="email"
-//           type="email"
-//           value={values.email}
-//           required
-//           onChange={onChange}
-//         />
-//       </div>
-//       <Flex className="mt-1">
-//         <FakeLink onClick={onClearForm}>Clear form</FakeLink>
-//         <PrimaryButton type="submit">Submit &rarr;</PrimaryButton>
-//       </Flex>
-//     </Layout>
-//   );
-// };
-
-// const condition = authUser => !!authUser;
-
-// export default compose(
-//   withFirebase,
-//   withAuthorization(condition)
-// )(AddNewCustomerPage);

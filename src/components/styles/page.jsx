@@ -64,3 +64,8 @@ export const GridBreed = styled(Grid)`
     }
   }
 `;
+
+export const GridDob = styled(Grid)`
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-gap: ${props => props.theme.sizeM};
+`;
