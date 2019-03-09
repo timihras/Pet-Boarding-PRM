@@ -1,17 +1,23 @@
 import React from 'react';
-import MaterialIcon from 'material-icons-react';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export const getMetaData = type => {
   switch (type) {
     case 'Arrival':
-      return <MaterialIcon size={19} icon="meeting_room" color="#6DBC70" />;
+      // return <Icon icon="add-row-bottom" iconSize={iconSize} color="#6DBC70" />;
+      return <Icon iconName="CompassNW" className="ms-IconExample" />;
     case 'Departure':
-      return <MaterialIcon size={19} icon="no_meeting_room" color="#7DA7DB" />;
+      // return (
+      //   <Icon icon="remove-row-bottom" iconSize={iconSize} color="#7DA7DB" />
+      // );
+      return <Icon iconName="CompassNW" className="ms-IconExample" />;
     case 'Meeting':
-      return <MaterialIcon size={19} icon="question_answer" color="#DDA342" />;
+      // return <Icon icon="send-to-graph" iconSize={iconSize} color="#DDA342" />;
+      return <Icon iconName="CompassNW" className="ms-IconExample" />;
 
     default:
-      return <MaterialIcon size={19} icon="event_note" color="#E1688A" />;
+      // return <Icon icon={icon} iconSize={iconSize} color="#E1688A" />;
+      return <Icon iconName="CompassNW" className="ms-IconExample" />;
   }
 };
 

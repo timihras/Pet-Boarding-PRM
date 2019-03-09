@@ -50,3 +50,22 @@ export const FakeLink = styled.div`
   text-decoration: none;
   cursor: pointer;
 `;
+
+export const GridBreed = styled(Grid)`
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: ${props => props.theme.sizeL};
+  margin: ${props => props.theme.sizeL} ${props => props.theme.sizeXS} 0;
+  div {
+    align-self: center;
+  }
+  span:first-child {
+    svg {
+      padding: 5px;
+    }
+  }
+`;
+
+export const GridDob = styled(Grid)`
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-gap: ${props => props.theme.sizeM};
+`;

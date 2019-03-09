@@ -1,21 +1,21 @@
 import React, { useContext } from 'react';
-import Slider, { createSliderWithTooltip } from 'rc-slider';
+// import Slider, { createSliderWithTooltip } from 'rc-slider';
 import styled from 'styled-components';
-import 'rc-slider/assets/index.css';
+// import 'rc-slider/assets/index.css';
 
 import { WizardCtx } from './index';
 
 import { Heading1, Heading4 } from '../../components/styles/headings';
-import { Flex, Grid } from '../../components/styles/page';
+import { Flex, Grid, GridDob } from '../../components/styles/page';
 import { Input } from '../../components/styles/form';
 
 import DogIllustration from '../../components/icons/dog-illustration-bw';
 import MaleIcon from '../../components/icons/male-icon';
 import FemaleIcon from '../../components/icons/female-icon';
 
-function percentFormatter(v) {
-  return `${v} kg`;
-}
+// function percentFormatter(v) {
+//   return `${v} kg`;
+// }
 
 const GridBreed = styled(Grid)`
   grid-template-columns: 1fr 3fr 1fr;
@@ -31,12 +31,7 @@ const GridBreed = styled(Grid)`
   }
 `;
 
-const GridDob = styled(Grid)`
-  grid-template-columns: 2fr 3fr 2fr;
-  grid-gap: ${props => props.theme.sizeM};
-`;
-
-const SliderWithTooltip = createSliderWithTooltip(Slider);
+// const SliderWithTooltip = createSliderWithTooltip(Slider);
 
 const WizardPetInfo = ({ state }) => {
   const dispatch = useContext(WizardCtx);
@@ -54,7 +49,7 @@ const WizardPetInfo = ({ state }) => {
         <span style={{ opacity: 1 - state.petSize / 100 + 0.2 }}>
           <DogIllustration />
         </span>
-        <div>
+        {/* <div>
           <SliderWithTooltip
             tipFormatter={percentFormatter}
             onChange={value =>
@@ -63,7 +58,7 @@ const WizardPetInfo = ({ state }) => {
             defaultValue={state.petSize}
             min={1}
           />
-        </div>
+        </div> */}
         <span style={{ opacity: state.petSize / 100 + 0.2 }}>
           <DogIllustration />
         </span>

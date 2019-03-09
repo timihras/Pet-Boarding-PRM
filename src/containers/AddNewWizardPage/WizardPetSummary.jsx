@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import MaterialIcon from 'material-icons-react';
 import moment from 'moment';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 import { Flex, MoreLink, FakeLink, Card } from '../../components/styles/page';
 import { Heading1, Heading4 } from '../../components/styles/headings';
@@ -82,7 +82,8 @@ const WizardPetSummary = ({ state }) => {
         <SummaryCard>
           <Flex>
             <IconWrapper>
-              <MaterialIcon icon="pets" color="rgba(125, 167, 219, 1)" />
+              {/* <Icon icon="calendar" iconSize={24} /> */}
+              <Icon iconName="CompassNW" className="ms-IconExample" />
             </IconWrapper>
             <div className="flex80">
               <Heading4>
@@ -120,7 +121,8 @@ const WizardPetSummary = ({ state }) => {
         <SummaryCard>
           <Flex>
             <IconWrapper>
-              <MaterialIcon icon="person" color="rgba(221, 163, 66, 1)" />
+              {/* <Icon icon="calendar" iconSize={24} /> */}
+              <Icon iconName="CompassNW" className="ms-IconExample" />
             </IconWrapper>
             <div className="flex80">
               <Heading4>

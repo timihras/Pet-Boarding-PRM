@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import MaterialIcon from 'material-icons-react';
 
 import { AuthUserContext } from '../utils/Session';
 import SignOutLink from './SignOutLink';
 
 import { Heading1, Heading2, Heading3 } from './styles/headings';
 import { Flex } from './styles/page';
+import { Icon38, Icon24 } from './styles/icons';
 
 import * as ROUTES from '../constants/routes';
 import * as ROLES from '../constants/roles';
@@ -109,7 +109,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="list" size={38} color="#7DA7DB" />
+              <Icon38 iconName="PublishCourse" color="#7DA7DB" />
               <Heading2>
                 Customer &<br /> Pet List
               </Heading2>
@@ -122,7 +122,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="event_note" size={38} color="#DDA342" />
+              <Icon38 iconName="Calendar" color="#DDA342" />
               <Heading2>
                 Calendar &<br /> Event List
               </Heading2>
@@ -135,7 +135,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="pets" size={38} color="#D45983" />
+              <Icon38 iconName="EmojiTabSymbols" color="#D45983" />
               <Heading2>
                 Add a new
                 <br /> Pet Wizard
@@ -149,7 +149,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="event" size={38} color="#615375" />
+              <Icon38 iconName="AddEvent" color="#615375" />
               <Heading2>
                 Add a new
                 <br /> Event
@@ -167,7 +167,7 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
             onClick={toggleMenu}
           >
             <button type="button">
-              <MaterialIcon icon="home" size={24} color="#D45983" />
+              <Icon24 iconName="Home" color="#D45983" />
               <Heading3>Home</Heading3>
             </button>
           </NavLink>
@@ -179,7 +179,8 @@ const NavigationAuth = ({ authUser, toggleMenu }) => {
               onClick={toggleMenu}
             >
               <button type="button">
-                <MaterialIcon icon="settings" size={24} color="#DDA342" />
+                {/* <Icon icon="cog" iconSize={24} color="#DDA342" /> */}
+                <Icon24 iconName="Settings" color="#DDA342" />
                 <Heading3>Settings</Heading3>
               </button>
             </NavLink>
